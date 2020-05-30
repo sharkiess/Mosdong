@@ -1,44 +1,237 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Mosdong</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/StyleSheet.css" />
+    <script src="https://kit.fontawesome.com/8cc909eb3b.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $("[data-toggle=\"tooltip\"]").tooltip();
+    </script>
 </head>
-<body>
+
+<body class="search-background lottemartdream">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="lottemartdream">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Mosdong</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <partial name="_LoginPartial" />
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                </div>
+                <nav class="navbar navbar-dark navbar-expand-lg navbar-toggleable-sm bg-primary mainmenu">
+                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><text style="font-family:LotteMartDream">한국상점</text> <text style="font-family:Binggrae-Bold">모스동</text><span class="sr-only">(current)</span></a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                        <partial name="_LoginPartial" />
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav flex-grow-1">
+
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        상점 관리
+                                    </a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
+                                        <a class="dropdown-item" asp-action="Index" asp-controller="Category" asp-area="Admin">Category</a>
+                                        <a class="dropdown-item">Sub Category</a>
+                                        <a class="dropdown-item">MenuItem</a>
+                                        <a class="dropdown-item">Coupons</a>
+                                        <a class="dropdown-item">Users</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">메뉴 1</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
             </div>
-        </nav>
+            <div class="container">검색창</div>
+        </div>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+        <div class="row">
+            &nbsp;
+        </div>
+        <div class="row">
+            <div class="col-sm-3 col-md-3">
+                <div class="panel list-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h5 class="panel-heading panel-rounded">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="list-group-item list-group-item-info list-group-item-action">
+                                    <i class="fas fa-store col-1"></i><text class="col-11">한국상점</text>
+                                </a>
+                            </h5>
+
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <table cellspacing="0">
+                                    <tr>
+                                        <td>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading panel-rounded">
+                                                    <a data-toggle="collapse" data-parent="#collapseOne" href="#collapseOneSub" class="list-group-item list-group-item-action">Articles</a>
+                                                </div>
+                                                <div id="collapseOneSub" class="panel-collapse collapse">
+                                                    <div class="panel-body">
+                                                        <table>
+                                                            <tr>
+                                                                <td class="panel-rounded-sub">
+                                                                    <a href="#" class="list-group-item list-group-item-action">Sub Category</a>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class="panel-rounded-sub">
+                                                                    <a href="#" class="list-group-item list-group-item-action">Sub Category</a>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="panel-rounded">
+                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="panel-rounded">
+                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <hr />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="panel panel-default">
+                        <h5 class="panel-heading panel-rounded">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="list-group-item list-group-item-info list-group-item-action">
+                                <i class="fas fa-utensils col-1"></i><text class="col-11">청정식품</text>
+                            </a>
+                        </h5>
+
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <table class="table0">
+                                    <tr>
+                                        <td class="panel-rounded">
+                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="panel-rounded">
+                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="panel-rounded">
+                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <hr />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+
+                        <h5 class="panel-heading panel-rounded">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="list-group-item list-group-item-info list-group-item-action">
+                                <i class="fas fa-store-alt col-1"></i><text class="col-11">반찬가게</text>
+                            </a>
+                        </h5>
+
+                        <div id="collapseThree" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <table class="table0">
+                                    <tr>
+                                        <td class="panel-rounded">
+                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="panel-rounded">
+                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="panel-rounded">
+                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <hr />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+
+                        <h5 class="panel-heading panel-rounded">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" class="list-group-item list-group-item-info list-group-item-action">
+                                <i class="fas fa-bread-slice col-1"></i><text class="col-11">자스민/삼미</text>
+                            </a>
+                        </h5>
+
+                        <div id="collapseFour" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <table class="table0">
+                                    <tr>
+                                        <td class="panel-rounded">
+                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="panel-rounded">
+                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="panel-rounded">
+                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <hr />
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-9 col-md-9">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top pl-3 footer text-white-50" style="background-color:#343a40;">
         <div class="container">
-            &copy; 2020 - Mosdong - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; @DateTime.Now.Year - Mosdong
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

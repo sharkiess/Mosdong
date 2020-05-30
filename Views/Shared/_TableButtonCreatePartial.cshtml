@@ -1,0 +1,20 @@
+﻿@model int
+
+<td style="text-align:right;">
+    <div class="btn-group" role="group">
+        <a class="btn btn-outline-primary" asp-action="Edit" asp-route-Id="@Model"
+                data-toggle="tooltip" data-placement="top" title="수정하기">
+            <i class="fas fa-edit">수정</i>
+        </a>
+        <a class="btn btn-outline-secondary" asp-action="Details" asp-route-Id="@Model"
+                data-toggle="tooltip" data-placement="top" title="상세보기">
+            <i class="fas fa-list-alt">상세</i>
+        </a>
+        <a class="btn btn-outline-danger" asp-action="Delete" asp-route-Id="@Model"
+                data-toggle="tooltip" data-placement="top" title="삭제하기">
+            <i class="fas fa-trash-alt">삭제</i>
+        </a>
+    </div>
+</td>
+
+

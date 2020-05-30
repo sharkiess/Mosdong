@@ -1,0 +1,37 @@
+﻿@model Mosdong.Models.Category
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<form method="post" asp-action="Delete">
+    <div class="border backgroundWhite">
+        <div class="row">
+            <div class="col-8">
+                <h2 class="text-info">카테고리 삭제</h2><br />
+            </div>
+        </div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <div class="col-2">
+                <label asp-for="Name" class="col-form-label"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Name" readonly class="form-control text-left">
+            </div>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-6 offset-2">
+
+                <partial name="_DeleteAndBackToListButtonPartial" model="Model.Id" />
+
+            </div>
+        </div>
+    </div>
+
+</form>
+
+
