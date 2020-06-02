@@ -483,3 +483,5 @@ C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Mosdong.csprojAssemblyReference.c
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SubCategory\Edit.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SubCategory\Delete.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SubCategory\Details.cshtml.g.cs
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\ProductItem\Index.cshtml.g.cs
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\ProductItem\Create.cshtml.g.cs

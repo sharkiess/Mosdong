@@ -1,0 +1,101 @@
+﻿@model Mosdong.Models.ViewModels.ProductItemViewModel
+@using Mosdong.Extensions
+
+
+@{
+    ViewData["Title"] = "상품 아이템 추가";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" enctype="multipart/form-data">
+    <div class="border backgroundWhite">
+        <div class="row">
+            <div class="col-9">
+                <h2 class="text-info">상품 아이템 추가</h2><br />
+            </div>
+        </div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="ProductItem.Name" class="col-form-label"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="ProductItem.Name" class="form-control text-left">
+            </div>
+            <span asp-validation-for="ProductItem.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="ProductItem.CategoryId" class="col-form-label"></label>
+            </div>
+            <div class="col-6">
+                <select asp-for="@Model.ProductItem.CategoryId" id="CategoryId" asp-items="Model.Category.ToSelectListItem(Model.ProductItem.CategoryId)" class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="ProductItem.SubCategoryId" class="col-form-label"></label>
+            </div>
+            <div class="col-6">
+                <select asp-for="@Model.ProductItem.SubCategoryId" id="SubCategoryId" asp-items="@(new SelectList(string.Empty,"Id","Name"))" class="form-control"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="ProductItem.Description" class="col-form-label"></label>
+            </div>
+            <div class="col-6">
+                @Html.TextAreaFor(m => m.ProductItem.Description)
+            </div>
+            <span asp-validation-for="ProductItem.Description" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="ProductItem.Price" class="col-form-label"></label>
+            </div>
+            <div class="col-6 form-inline">
+                <input asp-for="ProductItem.Price" class="form-control text-left" style="width:100px" aria-describedby="priceUnitInline">
+                <span id="priceUnitInline" class="text-muted">&nbsp;루블</span>
+            </div>
+            <span asp-validation-for="ProductItem.Price" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="ProductItem.StockAvailabilityNum" class="col-form-label"></label>
+            </div>
+            <div class="col-6 form-inline">
+                <input asp-for="ProductItem.StockAvailabilityNum" class="form-control text-left" style="width:100px" aria-describedby="ProductUnitInline"/>
+                <input type="hidden" asp-for="ProductItem.ProductUnit">
+                <span id="ProductUnitInline" class="text-muted">&nbsp;
+                    <select asp-for="ProductItem.ProductUnit" asp-items="Html.GetEnumSelectList<ProductItemModel.EProductUnit>()" class="form-control-sm"></select>
+                </span>
+            </div>
+            <span asp-validation-for="ProductItem.StockAvailabilityNum" class="text-danger"></span>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="ProductItem.StockAvailability" class="col-form-label"></label>
+            </div>
+            <div class="col-6">
+                <select asp-for="ProductItem.StockAvailability" asp-items="Html.GetEnumSelectList<ProductItemModel.EStockStatus>()" class="form-control-sm"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="ProductItem.Image" class="col-form-label"></label>
+            </div>
+            <div class="col-6">
+                <input type="file" name="files" multiple class="form-control-file" style="padding: 3px" />
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-6 offset-3">
+                <div class="row">
+                    <partial name="_CreateAndBackToListButtonPartial" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
+
