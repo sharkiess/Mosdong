@@ -8,12 +8,14 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/StyleSheet.css" />
     <script src="https://kit.fontawesome.com/8cc909eb3b.js" crossorigin="anonymous"></script>
-    <script type="text/javascript">
-        $("[data-toggle=\"tooltip\"]").tooltip();
-    </script>
+    <style>
+        .dropdown-hover-all .dropdown-menu, .dropdown-hover > .dropdown-menu {
+            margin: 0
+        }
+    </style>
 </head>
 
-<body class="search-background lottemartdream">
+<body class="lottemartdream">
     <header>
         <div class="lottemartdream">
             <div class="container">
@@ -26,21 +28,86 @@
                         <partial name="_LoginPartial" />
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav flex-grow-1">
-
                                 <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropDownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a class="nav-link dropdown-toggle" href="#" id="dropdown00" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         상점 관리
                                     </a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropDownMenuLink">
+                                    <div class="dropdown-menu" aria-labelledby="dropdown00">
                                         <a class="dropdown-item" asp-action="Index" asp-controller="Category" asp-area="Admin">Category</a>
                                         <a class="dropdown-item" asp-action="Index" asp-controller="SubCategory" asp-area="Admin">Sub Category</a>
                                         <a class="dropdown-item">MenuItem</a>
                                         <a class="dropdown-item">Coupons</a>
                                         <a class="dropdown-item">Users</a>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown dropright">
+                                            <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Layouts</a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
+                                                <a class="dropdown-item" href="#">Basic</a>
+                                                <a class="dropdown-item" href="#">Compact Aside</a>
+                                                <div class="dropdown-divider"></div>
+                                                <div class="dropdown dropright">
+                                                    <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Custom</a>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
+                                                        <a class="dropdown-item" href="#">Fullscreen</a>
+                                                        <a class="dropdown-item" href="#">Empty</a>
+                                                        <div class="dropdown-divider"></div>
+                                                        <a class="dropdown-item" href="#">Magic</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">메뉴 1</a>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-store col-1"></i> 한국상점</a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdown01">
+                                        <!--코딩해결못함<partial name="_NavBarCategoryPartial" /> CategoryNavigationModel.cs 수정필요-->
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown dropright">
+                                            <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Layouts</a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
+                                                <a class="dropdown-item" href="#">Basic</a>
+                                                <a class="dropdown-item" href="#">Compact Aside</a>
+                                                <div class="dropdown-divider"></div>
+                                                <div class="dropdown dropright">
+                                                    <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Custom</a>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
+                                                        <a class="dropdown-item" href="#">Fullscreen</a>
+                                                        <a class="dropdown-item" href="#">Empty</a>
+                                                        <div class="dropdown-divider"></div>
+                                                        <a class="dropdown-item" href="#">Magic</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-utensils col-1"></i> 청정식품</a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdown02">
+                                        <a class="dropdown-item" href="#">Single App</a>
+                                        <a class="dropdown-item" href="#">Multiple Works</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Disctribution</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-store-alt col-1"></i> 반찬가게</a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdown03">
+                                        <a class="dropdown-item" href="#">Single App</a>
+                                        <a class="dropdown-item" href="#">Multiple Works</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Disctribution</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bread-slice col-1"></i> 자스민/삼미</a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                        <a class="dropdown-item" href="#">Single App</a>
+                                        <a class="dropdown-item" href="#">Multiple Works</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Disctribution</a>
+                                    </div>
                                 </li>
                             </ul>
                         </div>
@@ -51,183 +118,11 @@
         </div>
     </header>
     <div class="container">
-        <div class="row">
-            &nbsp;
-        </div>
-        <div class="row">
-            <div class="col-sm-3 col-md-3">
-                <div class="panel list-group" id="accordion">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <h5 class="panel-heading panel-rounded">
-                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="list-group-item list-group-item-info list-group-item-action">
-                                    <i class="fas fa-store col-1"></i><text class="col-11">한국상점</text>
-                                </a>
-                            </h5>
 
-                        </div>
-                        <div id="collapseOne" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <table cellspacing="0">
-                                    <tr>
-                                        <td>
-                                            <div class="panel panel-default">
-                                                <div class="panel-heading panel-rounded">
-                                                    <a data-toggle="collapse" data-parent="#collapseOne" href="#collapseOneSub" class="list-group-item list-group-item-action">Articles</a>
-                                                </div>
-                                                <div id="collapseOneSub" class="panel-collapse collapse">
-                                                    <div class="panel-body">
-                                                        <table>
-                                                            <tr>
-                                                                <td class="panel-rounded-sub">
-                                                                    <a href="#" class="list-group-item list-group-item-action">Sub Category</a>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="panel-rounded-sub">
-                                                                    <a href="#" class="list-group-item list-group-item-action">Sub Category</a>
-                                                                </td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>
-                                                </div>
-                                            </div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="panel-rounded">
-                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="panel-rounded">
-                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <hr />
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="panel panel-default">
-                        <h5 class="panel-heading panel-rounded">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="list-group-item list-group-item-info list-group-item-action">
-                                <i class="fas fa-utensils col-1"></i><text class="col-11">청정식품</text>
-                            </a>
-                        </h5>
-
-                        <div id="collapseTwo" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <table class="table0">
-                                    <tr>
-                                        <td class="panel-rounded">
-                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="panel-rounded">
-                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="panel-rounded">
-                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <hr />
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-
-                        <h5 class="panel-heading panel-rounded">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="list-group-item list-group-item-info list-group-item-action">
-                                <i class="fas fa-store-alt col-1"></i><text class="col-11">반찬가게</text>
-                            </a>
-                        </h5>
-
-                        <div id="collapseThree" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <table class="table0">
-                                    <tr>
-                                        <td class="panel-rounded">
-                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="panel-rounded">
-                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="panel-rounded">
-                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <hr />
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-
-                        <h5 class="panel-heading panel-rounded">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" class="list-group-item list-group-item-info list-group-item-action">
-                                <i class="fas fa-bread-slice col-1"></i><text class="col-11">자스민/삼미</text>
-                            </a>
-                        </h5>
-
-                        <div id="collapseFour" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <table class="table0">
-                                    <tr>
-                                        <td class="panel-rounded">
-                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="panel-rounded">
-                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="panel-rounded">
-                                            <a href="#" class="list-group-item list-group-item-action">Articles</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <hr />
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-9 col-md-9">
-                <main role="main" class="pb-3">
-                    @RenderBody()
-                </main>
-            </div>
-        </div>
     </div>
 
     <footer class="border-top pl-3 footer text-white-50" style="background-color:#343a40;">

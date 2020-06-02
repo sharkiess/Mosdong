@@ -477,4 +477,9 @@ C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SubCatego
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SubCategory\Create.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CreateButtonPartial.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_StatusMessage.cshtml.g.cs
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout_old.cshtml.g.cs
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_NavBarCategoryPartial.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Mosdong.csprojAssemblyReference.cache
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SubCategory\Edit.cshtml.g.cs
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SubCategory\Delete.cshtml.g.cs
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SubCategory\Details.cshtml.g.cs

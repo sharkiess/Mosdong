@@ -1,0 +1,17 @@
+﻿@model CategoryNavigationModel
+@using Mosdong.Extensions
+
+@if (Model.CurrentSubCategoryList.Count() > 0)
+{
+
+    @foreach (var category in Model.CategoryList)
+    {
+        var categoryLineModel = new CategoryNavigationModel.CategoryLineModel
+        {
+            CurrentCategoryId = 1,
+            Category = category
+        };
+        @await Html.PartialAsync("_CategoryLine.Navigation", categoryLineModel)
+    }
+
+}

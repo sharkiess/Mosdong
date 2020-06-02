@@ -20,24 +20,24 @@
             <table class="table table-hover">
                 <tr class="table-dark">
                     <th scope="col">
-                        @Html.DisplayNameFor(m => m.Name)
-                    </th>
-                    <th scope="col">
                         @Html.DisplayNameFor(m => m.Category.Name)
                     </th>
-                    <th scope="col"></th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(m => m.Name)
+                    </th>
+                                        <th scope="col"></th>
                 </tr>
                 @foreach (var item in Model)
                 {
-                    <tr>
-                        <td>
-                            @Html.DisplayFor(m => item.Name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(m => item.Category.Name)
-                        </td>
-                        <partial name="_TableButtonCreatePartial" model="item.Id" />
-                    </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(m => item.Category.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(m => item.Name)
+                </td>
+                <partial name="_TableButtonCreatePartial" model="item.Id" />
+            </tr>
                 }
             </table>
         }
