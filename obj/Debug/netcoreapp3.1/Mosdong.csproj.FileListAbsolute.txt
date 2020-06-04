@@ -422,9 +422,6 @@ C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\I
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\_ViewImports.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\_ViewStart.cshtml.g.cs
-C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Mosdong.csproj.CoreCompileInputs.cache
-C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Mosdong.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Mosdong.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\ConfirmEmail.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\ConfirmEmailChange.cshtml.g.cs
@@ -479,9 +476,16 @@ C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CreateButtonP
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_StatusMessage.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout_old.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_NavBarCategoryPartial.cshtml.g.cs
-C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Mosdong.csprojAssemblyReference.cache
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SubCategory\Edit.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SubCategory\Delete.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\SubCategory\Details.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\ProductItem\Index.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\ProductItem\Create.cshtml.g.cs
+C:\Users\Admin\Mosdong\bin\Debug\netcoreapp3.1\xunit.abstractions.dll
+C:\Users\Admin\Mosdong\bin\Debug\netcoreapp3.1\xunit.core.dll
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Mosdong.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Mosdong.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Mosdong.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Mosdong.csproj.GenerateResource.cache
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Mosdong.Properties.Resources.resources
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Mosdong.csprojAssemblyReference.cache

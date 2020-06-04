@@ -2,21 +2,21 @@
 
 namespace Mosdong.Data.Migrations
 {
-    public partial class EditProductItemTable : Migration
+    public partial class AddProductUnitQuantityToProductItem : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "StockAvailabilityNum",
+                name: "ProductUnitQuantity",
                 table: "ProductItem",
-                nullable: true,
-                defaultValue: 0);
+                nullable: false,
+                defaultValue: 1);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "StockAvailabilityNum",
+                name: "ProductUnitQuantity",
                 table: "ProductItem");
         }
     }

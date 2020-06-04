@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Mosdong.Data;
 
 namespace Mosdong.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200603084114_AddProductUnitQuantityToProductItem")]
+    partial class AddProductUnitQuantityToProductItem
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -257,9 +259,6 @@ namespace Mosdong.Data.Migrations
                     b.Property<bool>("IsNotVisible")
                         .HasColumnType("bit");
 
-                    b.Property<bool>("IsStockUnlimited")
-                        .HasColumnType("bit");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -272,9 +271,6 @@ namespace Mosdong.Data.Migrations
 
                     b.Property<int>("ProductUnitQuantity")
                         .HasColumnType("int");
-
-                    b.Property<double>("SalePrice")
-                        .HasColumnType("float");
 
                     b.Property<string>("StockAvailability")
                         .HasColumnType("nvarchar(max)");

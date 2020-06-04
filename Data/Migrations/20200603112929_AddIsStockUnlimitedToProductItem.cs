@@ -2,21 +2,21 @@
 
 namespace Mosdong.Data.Migrations
 {
-    public partial class EditProductItemTable : Migration
+    public partial class AddIsStockUnlimitedToProductItem : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<int>(
-                name: "StockAvailabilityNum",
+            migrationBuilder.AddColumn<bool>(
+                name: "IsStockUnlimited",
                 table: "ProductItem",
-                nullable: true,
-                defaultValue: 0);
+                nullable: false,
+                defaultValue: false);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "StockAvailabilityNum",
+                name: "IsStockUnlimited",
                 table: "ProductItem");
         }
     }

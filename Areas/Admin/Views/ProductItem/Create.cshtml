@@ -1,16 +1,16 @@
 ﻿@model Mosdong.Models.ViewModels.ProductItemViewModel
 @using Mosdong.Extensions
 
-
 @{
     ViewData["Title"] = "상품 아이템 추가";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <form method="post" enctype="multipart/form-data">
     <div class="border backgroundWhite">
         <div class="row">
-            <div class="col-9">
+            <div class="col-12">
                 <h2 class="text-info">상품 아이템 추가</h2><br />
             </div>
         </div>
@@ -19,77 +19,115 @@
             <div class="col-3">
                 <label asp-for="ProductItem.Name" class="col-form-label"></label>
             </div>
-            <div class="col-6">
-                <input asp-for="ProductItem.Name" class="form-control text-left">
+            <div class="col-9">
+                <input asp-for="ProductItem.Name" class="form-control text-left" style="width:300px">
+                <span asp-validation-for="ProductItem.Name" class="text-danger"></span>
             </div>
-            <span asp-validation-for="ProductItem.Name" class="text-danger"></span>
         </div>
         <div class="form-group row">
             <div class="col-3">
                 <label asp-for="ProductItem.CategoryId" class="col-form-label"></label>
             </div>
-            <div class="col-6">
-                <select asp-for="@Model.ProductItem.CategoryId" id="CategoryId" asp-items="Model.Category.ToSelectListItem(Model.ProductItem.CategoryId)" class="form-control"></select>
+            <div class="col-9">
+                <select asp-for="@Model.ProductItem.CategoryId" id="CategoryId" asp-items="Model.Category.ToSelectListItem(Model.ProductItem.CategoryId)" class="form-control" style="width:300px"></select>
             </div>
         </div>
         <div class="form-group row">
             <div class="col-3">
                 <label asp-for="ProductItem.SubCategoryId" class="col-form-label"></label>
             </div>
-            <div class="col-6">
-                <select asp-for="@Model.ProductItem.SubCategoryId" id="SubCategoryId" asp-items="@(new SelectList(string.Empty,"Id","Name"))" class="form-control"></select>
+            <div class="col-9">
+                <select asp-for="@Model.ProductItem.SubCategoryId" name="SubCategoryId" id="SubCategoryId" asp-items="@(new SelectList(string.Empty,"Id","Name"))" class="form-control" style="width:300px"></select>
             </div>
-        </div>
-        <div class="form-group row">
-            <div class="col-3">
-                <label asp-for="ProductItem.Description" class="col-form-label"></label>
-            </div>
-            <div class="col-6">
-                @Html.TextAreaFor(m => m.ProductItem.Description)
-            </div>
-            <span asp-validation-for="ProductItem.Description" class="text-danger"></span>
         </div>
         <div class="form-group row">
             <div class="col-3">
                 <label asp-for="ProductItem.Price" class="col-form-label"></label>
             </div>
-            <div class="col-6 form-inline">
-                <input asp-for="ProductItem.Price" class="form-control text-left" style="width:100px" aria-describedby="priceUnitInline">
-                <span id="priceUnitInline" class="text-muted">&nbsp;루블</span>
+            <div class="col-9 form-inline">
+                <input asp-for="ProductItem.Price" class="form-control text-left" style="width:120px" aria-describedby="priceUnitInline">
+                <span id="priceUnitInline" class="text-muted">&nbsp;루블</span> &nbsp;
+                <span asp-validation-for="ProductItem.Price" class="text-danger"></span>
             </div>
-            <span asp-validation-for="ProductItem.Price" class="text-danger"></span>
+
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="ProductItem.SalePrice" class="col-form-label"></label>
+            </div>
+            <div class="col-9 form-inline">
+                <input type="text" id="SalePrice" asp-for="ProductItem.SalePrice" class="form-control text-left" style="width:120px" aria-describedby="priceUnitInline">
+                <div id="priceUnitInline" class="text-muted form-inline">
+                    <text>&nbsp;루블&nbsp;</text>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="checkbox" value="" id="IsNotOnSale">
+                        <label class="form-check-label" for="IsNotOnSale">
+                            할인행사 없음
+                        </label>
+                    </div>
+                </div>
+                <span asp-validation-for="ProductItem.SalePrice" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="ProductItem.ProductUnit" class="col-form-label"></label>
+            </div>
+            <div class="col-9 form-inline">
+                <input asp-for="ProductItem.ProductUnitQuantity" class="form-control text-left" style="width:120px" value="1" aria-describedby="ProductUnitInline" />
+                <span id="ProductUnitInline" class="text-muted">
+                    &nbsp;
+                    <select asp-for="ProductItem.ProductUnit" asp-items="Html.GetEnumSelectList<ProductItemModel.EProductUnit>()" class="form-control-sm"></select>
+                </span>
+            </div>
+
         </div>
         <div class="form-group row">
             <div class="col-3">
                 <label asp-for="ProductItem.StockAvailabilityNum" class="col-form-label"></label>
             </div>
-            <div class="col-6 form-inline">
-                <input asp-for="ProductItem.StockAvailabilityNum" class="form-control text-left" style="width:100px" aria-describedby="ProductUnitInline"/>
-                <input type="hidden" asp-for="ProductItem.ProductUnit">
-                <span id="ProductUnitInline" class="text-muted">&nbsp;
-                    <select asp-for="ProductItem.ProductUnit" asp-items="Html.GetEnumSelectList<ProductItemModel.EProductUnit>()" class="form-control-sm"></select>
+            <div class="col-9 form-inline">
+                <input type="text" id="StockAvailabilityNum" asp-for="ProductItem.StockAvailabilityNum" class="form-control text-left" style="width:120px" aria-describedby="StockAvailabilityNumInline" value="0" />
+
+                <span id="StockAvailabilityNumInline" class="form-check-inline">
+                    &nbsp;
+                    <input asp-for="ProductItem.IsStockUnlimited" class="form-check-input" type="checkbox" id="IsStockUnlimited">
+                    <label class="form-check-label" for="IsStockUnlimited">
+                        재고수량 제한없음
+                    </label>
                 </span>
+                <span asp-validation-for="ProductItem.StockAvailabilityNum" class="text-danger"></span>
             </div>
-            <span asp-validation-for="ProductItem.StockAvailabilityNum" class="text-danger"></span>
         </div>
         <div class="form-group row">
             <div class="col-3">
                 <label asp-for="ProductItem.StockAvailability" class="col-form-label"></label>
             </div>
-            <div class="col-6">
-                <select asp-for="ProductItem.StockAvailability" asp-items="Html.GetEnumSelectList<ProductItemModel.EStockStatus>()" class="form-control-sm"></select>
+            <div class="col-9">
+                <select asp-for="ProductItem.StockAvailability" asp-items="Html.GetEnumSelectList<ProductItemModel.EStockStatus>()" class="form-control" style="width:120px"></select>
             </div>
         </div>
         <div class="form-group row">
             <div class="col-3">
                 <label asp-for="ProductItem.Image" class="col-form-label"></label>
             </div>
-            <div class="col-6">
+            <div class="col-9">
                 <input type="file" name="files" multiple class="form-control-file" style="padding: 3px" />
             </div>
         </div>
         <div class="form-group row">
-            <div class="col-6 offset-3">
+            <div class="col-3">
+                <label asp-for="ProductItem.Description" class="col-form-label"></label>
+            </div>
+            <div class="col-9">
+                @Html.TextAreaFor(m => m.ProductItem.Description)
+            </div>
+            <span asp-validation-for="ProductItem.Description" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-9 offset-3">
                 <div class="row">
                     <partial name="_CreateAndBackToListButtonPartial" />
                 </div>
@@ -99,3 +137,60 @@
 
 </form>
 
+@section Scripts{
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'lists',
+            menubar: 'file edit format'
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            getSubCategory();
+            $('#CategoryId').change(function () {
+                getSubCategory();
+            });
+        });
+
+        function getSubCategory() {
+            var url = '@Url.Content("~/")' + "Admin/SubCategory/GetSubCategory";
+            var ddlsource = '#CategoryId';
+            $.getJSON(url, { id: $(ddlsource).val() }, function (data) {
+                var items = '';
+                $('#SubCategoryId').empty();
+                $.each(data, function (i, subcategory) {
+                    items += "<option value = '" + subcategory.value + "'>" + subcategory.text + "</option>";
+                });
+
+                $('#SubCategoryId').html(items);
+            })
+        }
+    </script>
+
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        $('#IsStockUnlimited').change(function () {
+            if (this.checked) {
+                $('#StockAvailabilityNum').prop('disabled', true);
+                $('#StockAvailabilityNum').val('0');
+                $('#IsStockUnlimited').val('true');
+            } else {
+                $('#StockAvailabilityNum').prop('disabled', false);
+            }
+        });
+    </script>
+
+    <script>
+        $('#IsNotOnSale').change(function () {
+            if (this.checked) {
+                $('#SalePrice').prop('disabled', true);
+                $('#SalePrice').val('0');
+            } else {
+                $('#SalePrice').prop('disabled', false);
+            }
+        });
+    </script>
+}

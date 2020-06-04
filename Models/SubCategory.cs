@@ -8,7 +8,7 @@ namespace Mosdong.Models
         [Key]
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "필수 입력 사항입니다.")]
         [Display(Name = "하위카테고리")]
         public string Name { get; set; }
 
