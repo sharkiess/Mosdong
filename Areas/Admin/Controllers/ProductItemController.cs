@@ -85,7 +85,71 @@ namespace Mosdong.Areas.Admin.Controllers
             await _db.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
-        }      
+        }
+        //GET - Edit
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            ProductItemVM.ProductItem = await _db.ProductItem.Include(p => p.Category).Include(p => p.SubCategory).SingleOrDefaultAsync(p=>p.Id==id);
+            ProductItemVM.SubCategory = await _db.SubCategory.Where(s => s.CategoryId == ProductItemVM.ProductItem.CategoryId).ToListAsync();
+
+            if (ProductItemVM.ProductItem == null)
+            {
+                return NotFound();
+            }
+            return View(ProductItemVM);
+        }
+
+        //POST - Edit
+        [HttpPost, ActionName("Edit")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditPOST(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+            ProductItemVM.ProductItem.SubCategoryId = Convert.ToInt32(Request.Form["SubCategoryId"].ToString());
+
+            _db.ProductItem.Add(ProductItemVM.ProductItem);
+            await _db.SaveChangesAsync();
+
+            //Work on the image saving section
+
+            string webRootPath = _hostEnvironment.WebRootPath;
+            var files = HttpContext.Request.Form.Files;
+
+            var productItemFromDb = await _db.ProductItem.FindAsync(ProductItemVM.ProductItem.Id);
+
+            if (files.Count > 0)
+            {
+                //file has been uploaded
+                var uploads = Path.Combine(webRootPath, "images");
+                var extension = Path.GetExtension(files[0].FileName);
+
+                using (var filesStream = new FileStream(Path.Combine(uploads, ProductItemVM.ProductItem.Id + extension), FileMode.Create))
+                {
+                    files[0].CopyTo(filesStream);
+                }
+                productItemFromDb.Image = @"\images\product_images\" + ProductItemVM.ProductItem.Id + extension;
+            }
+            else
+            {
+                //no file was uploaded, so use default image
+                var uploads = Path.Combine(webRootPath, @"images\product_images\" + SD.DefaultImage);
+                System.IO.File.Copy(uploads, webRootPath + @"\images\product_images\" + ProductItemVM.ProductItem.Id + ".png");
+                productItemFromDb.Image = @"\images\product_images\" + ProductItemVM.ProductItem.Id + ".png";
+
+            }
+
+            await _db.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
+        }
 
     }
 }

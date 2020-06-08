@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="utf-8" />
@@ -59,7 +61,60 @@
                                         </div>
                                     </div>
                                 </li>
-                                @await Component.InvokeAsync("TopNav")
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-store col-1"></i> 한국상점</a>
+                                    <div class="dropdown-menu" id="nav1" aria-labelledby="dropdown01">
+                                        <!--navbar 작업중<partial name="~/Views/Layout/Navigation.cshtml" />-->
+                                        <!--Html.Partial("~/Views/Layout/Navigation.cshtml", new Mosdong.Models.ViewModels.NavListViewModel { ShopId = 1})-->
+
+                                        <partial name="~/Views/Layout/Navigation.cshtml"/>
+                                        <div class="dropdown-divider"></div>
+                                        <div class="dropdown dropright">
+                                            <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Layouts</a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
+                                                <a class="dropdown-item" href="#">Basic</a>
+                                                <a class="dropdown-item" href="#">Compact Aside</a>
+                                                <div class="dropdown-divider"></div>
+                                                <div class="dropdown dropright">
+                                                    <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Custom</a>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
+                                                        <a class="dropdown-item" href="#">Fullscreen</a>
+                                                        <a class="dropdown-item" href="#">Empty</a>
+                                                        <div class="dropdown-divider"></div>
+                                                        <a class="dropdown-item" href="#">Magic</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-utensils col-1"></i> 청정식품</a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdown02">
+                                        <a class="dropdown-item" href="#">Single App</a>
+                                        <a class="dropdown-item" href="#">Multiple Works</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Disctribution</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-store-alt col-1"></i> 반찬가게</a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdown03">
+                                        <a class="dropdown-item" href="#">Single App</a>
+                                        <a class="dropdown-item" href="#">Multiple Works</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Disctribution</a>
+                                    </div>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-bread-slice col-1"></i> 자스민/삼미</a>
+                                    <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                        <a class="dropdown-item" href="#">Single App</a>
+                                        <a class="dropdown-item" href="#">Multiple Works</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Disctribution</a>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>

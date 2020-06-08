@@ -43,6 +43,7 @@ namespace Mosdong.Areas.Admin.Controllers
             return View(model);
         }
 
+
         //POST - Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -98,7 +99,7 @@ namespace Mosdong.Areas.Admin.Controllers
             {
                 return NotFound();
             }
-            SubCategoryAndCategoryViewModel model = new SubCategoryAndCategoryViewModel
+            SubCategoryAndCategoryViewModel model = new SubCategoryAndCategoryViewModel()
             {
                 CategoryList = await _db.Category.ToListAsync(),
                 SubCategory = subCategory,
@@ -108,7 +109,7 @@ namespace Mosdong.Areas.Admin.Controllers
             return View(model);
         }
 
-        //POST - Create
+        //POST - Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(SubCategoryAndCategoryViewModel model)

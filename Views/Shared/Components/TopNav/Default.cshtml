@@ -1,0 +1,23 @@
+﻿@model Mosdong.Models.ViewModels.NavListViewModel
+
+@if (Model != null)
+{
+    @foreach (var item in Model.NavCategory)
+    {
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="dropdown_@Html.DisplayFor(m => item.Id)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-store col-1"></i>  @Html.DisplayFor(m => item.Name)</a>
+            <div class="dropdown-menu" id="nav@Html.DisplayFor(m => item.CategoryId)" aria-labelledby="dropdown_@Html.DisplayFor(m => item.Id)">
+
+                    @foreach (var sub in Model.NavSubCategory.Where(s => s.CategoryId == item.Id))
+                    {
+                        <a class="dropdown-item" href="#">@Html.DisplayFor(s => sub.Name)</a>
+                    }
+
+            </div>
+        </li>
+    }
+}
+else
+{
+    <p>TopNav List Null</p>
+}
