@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Mosdong.Data;
+using Mosdong.Models;
 using Mosdong.Models.ViewModels;
 using Mosdong.Utility;
 
@@ -50,6 +51,11 @@ namespace Mosdong.Areas.Admin.Controllers
         public async Task<IActionResult> CreatePOST()
         {
             ProductItemVM.ProductItem.SubCategoryId = Convert.ToInt32(Request.Form["SubCategoryId"].ToString());
+
+            if(!ModelState.IsValid)
+            {
+                return View(ProductItemVM);
+            }
 
             _db.ProductItem.Add(ProductItemVM.ProductItem);
             await _db.SaveChangesAsync();
@@ -115,8 +121,11 @@ namespace Mosdong.Areas.Admin.Controllers
             }
             ProductItemVM.ProductItem.SubCategoryId = Convert.ToInt32(Request.Form["SubCategoryId"].ToString());
 
-            _db.ProductItem.Add(ProductItemVM.ProductItem);
-            await _db.SaveChangesAsync();
+            if (!ModelState.IsValid)
+            {
+                ProductItemVM.SubCategory = await _db.SubCategory.Where(s => s.CategoryId == ProductItemVM.ProductItem.CategoryId).ToListAsync();
+                return View(ProductItemVM);
+            }
 
             //Work on the image saving section
 
@@ -127,29 +136,86 @@ namespace Mosdong.Areas.Admin.Controllers
 
             if (files.Count > 0)
             {
-                //file has been uploaded
+                //New file has been uploaded
                 var uploads = Path.Combine(webRootPath, "images");
-                var extension = Path.GetExtension(files[0].FileName);
+                var extension_new = Path.GetExtension(files[0].FileName);
 
-                using (var filesStream = new FileStream(Path.Combine(uploads, ProductItemVM.ProductItem.Id + extension), FileMode.Create))
+                //Delete the original file
+                var imagePath = Path.Combine(webRootPath, productItemFromDb.Image.TrimStart('\\'));
+
+                if(System.IO.File.Exists(imagePath))
+                {
+                    System.IO.File.Delete(imagePath);
+                }
+
+                //we will upload the image
+                using (var filesStream = new FileStream(Path.Combine(uploads, webRootPath + @"\images\product_images\" + ProductItemVM.ProductItem.Id + extension_new), FileMode.Create))
                 {
                     files[0].CopyTo(filesStream);
                 }
-                productItemFromDb.Image = @"\images\product_images\" + ProductItemVM.ProductItem.Id + extension;
+                productItemFromDb.Image = @"\images\product_images\" + ProductItemVM.ProductItem.Id + extension_new;
             }
-            else
-            {
-                //no file was uploaded, so use default image
-                var uploads = Path.Combine(webRootPath, @"images\product_images\" + SD.DefaultImage);
-                System.IO.File.Copy(uploads, webRootPath + @"\images\product_images\" + ProductItemVM.ProductItem.Id + ".png");
-                productItemFromDb.Image = @"\images\product_images\" + ProductItemVM.ProductItem.Id + ".png";
 
-            }
+            productItemFromDb.Name = ProductItemVM.ProductItem.Name;
+            productItemFromDb.Price = ProductItemVM.ProductItem.Price;
+            productItemFromDb.SalePrice = ProductItemVM.ProductItem.SalePrice;
+            productItemFromDb.Description = ProductItemVM.ProductItem.Description;
+            productItemFromDb.StockAvailabilityNum = ProductItemVM.ProductItem.StockAvailabilityNum;
+            productItemFromDb.StockAvailability = ProductItemVM.ProductItem.StockAvailability;
+            productItemFromDb.ProductUnitQuantity = ProductItemVM.ProductItem.ProductUnitQuantity;
+            productItemFromDb.ProductUnit = ProductItemVM.ProductItem.ProductUnit;
+            productItemFromDb.IsNotVisible = ProductItemVM.ProductItem.IsNotVisible;
+            productItemFromDb.IsStockUnlimited = ProductItemVM.ProductItem.IsStockUnlimited;
+            productItemFromDb.CategoryId = ProductItemVM.ProductItem.CategoryId;
+            productItemFromDb.SubCategoryId = ProductItemVM.ProductItem.SubCategoryId;
 
             await _db.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
         }
+
+        //GET - Delete
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            ProductItemVM.ProductItem = await _db.ProductItem.Include(p => p.Category).Include(p => p.SubCategory).SingleOrDefaultAsync(p => p.Id == id);
+
+            if (ProductItemVM.ProductItem == null)
+            {
+                return NotFound();
+            }
+            return View(ProductItemVM);
+        }
+
+        //POST - Delete
+
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+
+            string webRootPath = _hostEnvironment.WebRootPath;
+            ProductItemModel productItem = await _db.ProductItem.FindAsync(id);
+
+            if (productItem != null)
+
+            {
+                var imagePath = Path.Combine(webRootPath, productItem.Image.TrimStart('\\'));
+                if (System.IO.File.Exists(imagePath))
+                {
+                    System.IO.File.Delete(imagePath);
+                }
+                _db.ProductItem.Remove(productItem);
+                await _db.SaveChangesAsync();
+            }
+
+            return RedirectToAction(nameof(Index));
+        }
+
 
     }
 }

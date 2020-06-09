@@ -41,12 +41,14 @@ namespace Mosdong.Models
         public string StockAvailability { get; set; }
         public enum EStockStatus { 판매중 = 0, 품절 = 1, 입고예정 = 2 }
 
+        [Range(1, int.MaxValue, ErrorMessage = "판매단위는 1 이상이어야합니다.")]
         public int ProductUnitQuantity { get; set; }
 
         [Display(Name = "판매단위")]
         public string ProductUnit { get; set; }
-        public enum EProductUnit {  개 = 0, 팩 = 1, 그램 = 2, 키로 = 3, 박스 = 4, 세트 = 5, 마리 = 6, 포기 = 7 }        
+        public enum EProductUnit {  개 = 0, 팩 = 1, 그램 = 2, 키로 = 3, 박스 = 4, 세트 = 5, 마리 = 6, 포기 = 7 }
 
+        [Display(Name = "상품표시옵션")]
         public bool IsNotVisible { get; set; }
         public bool IsStockUnlimited { get; set; }
         
