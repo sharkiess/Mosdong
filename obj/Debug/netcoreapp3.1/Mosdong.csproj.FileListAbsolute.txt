@@ -492,3 +492,7 @@ C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Mosdong.csprojAssemblyReference.c
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout_backup.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\TopNav\Default.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\ProductItem\Delete.cshtml.g.cs
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Coupon\Index.cshtml.g.cs
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Coupon\Create.cshtml.g.cs
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Coupon\Edit.cshtml.g.cs
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Coupon\Delete.cshtml.g.cs
