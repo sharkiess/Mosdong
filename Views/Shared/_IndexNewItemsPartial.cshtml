@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ProductItemModel>
+
+@if (Model.Count() > 0)
+{
+         <div class="border border-info rounded col-12" style="margin-bottom:10px; margin-top:10px; padding:10px">
+            
+                <h4 class="text-info">신상품 &nbsp;<span class="badge badge-pill badge-info">New</span></h4>
+            
+                <div class="row">
+
+                    @foreach (var product in Model.Where(p => p.ProductAd == "1" && p.IsNotVisible == false).OrderByDescending(p=>p.Id).Take(5))
+                    {
+                        <div class="col-md-2">
+                            <div class="d-none d-md-block">
+                                <a asp-action="Details" class="text-info" asp-route-id="@product.Id">
+                                    <img src="@product.Image" width="100%" height="100%" style="border-radius:5px; border:1px solid #bbb9b9;" />
+                                </a>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <a asp-action="Details" class="text-info" asp-route-id="@product.Id">
+                                        <text class="text-primary" style="font-size:18px;">@product.Name</text>
+                                    </a>
+                                    <br />
+                                    @product.Price 루블
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    @{ 
+                        if (Model.Count()>5)
+                        {
+                                        <div class="col-md-2">
+                                            <i class="fas fa-angle-double-right text-info"> more</i>
+                                        </div>
+                        }
+                    }
+                    
+                </div>
+                </div>
+
+        <div class="p-4"></div>
+
+}

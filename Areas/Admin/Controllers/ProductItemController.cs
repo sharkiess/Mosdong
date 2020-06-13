@@ -73,7 +73,7 @@ namespace Mosdong.Areas.Admin.Controllers
                 var uploads = Path.Combine(webRootPath, "images");
                 var extension = Path.GetExtension(files[0].FileName);
 
-                using (var filesStream = new FileStream(Path.Combine(uploads, ProductItemVM.ProductItem.Id + extension), FileMode.Create))
+                using (var filesStream = new FileStream(Path.Combine(uploads, webRootPath + @"\images\product_images\" + ProductItemVM.ProductItem.Id + extension), FileMode.Create))
                 {
                     files[0].CopyTo(filesStream);
                 }
@@ -165,6 +165,7 @@ namespace Mosdong.Areas.Admin.Controllers
             productItemFromDb.ProductUnitQuantity = ProductItemVM.ProductItem.ProductUnitQuantity;
             productItemFromDb.ProductUnit = ProductItemVM.ProductItem.ProductUnit;
             productItemFromDb.IsNotVisible = ProductItemVM.ProductItem.IsNotVisible;
+            productItemFromDb.ProductAd = ProductItemVM.ProductItem.ProductAd;
             productItemFromDb.IsStockUnlimited = ProductItemVM.ProductItem.IsStockUnlimited;
             productItemFromDb.CategoryId = ProductItemVM.ProductItem.CategoryId;
             productItemFromDb.SubCategoryId = ProductItemVM.ProductItem.SubCategoryId;

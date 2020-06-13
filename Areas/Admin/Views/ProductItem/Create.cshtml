@@ -113,6 +113,14 @@
         </div>
         <div class="form-group row">
             <div class="col-3">
+                <label asp-for="ProductItem.ProductAd" class="col-form-label"></label>
+            </div>
+            <div class="col-9">
+                <select asp-for="ProductItem.ProductAd" asp-items="Html.GetEnumSelectList<ProductItemModel.EProductAd>()" class="form-control" style="width:120px"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
                 <label asp-for="ProductItem.IsNotVisible" class="col-form-label"></label>
             </div>
             <div class="col-9">
