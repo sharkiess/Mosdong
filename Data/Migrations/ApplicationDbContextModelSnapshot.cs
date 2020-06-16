@@ -270,6 +270,32 @@ namespace Mosdong.Data.Migrations
                     b.ToTable("Coupon");
                 });
 
+            modelBuilder.Entity("Mosdong.Models.MiniCategory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("SubCategoryId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("SubCategoryId");
+
+                    b.ToTable("MiniCategory");
+                });
+
             modelBuilder.Entity("Mosdong.Models.ProductItemModel", b =>
                 {
                     b.Property<int>("Id")
@@ -291,6 +317,9 @@ namespace Mosdong.Data.Migrations
 
                     b.Property<bool>("IsStockUnlimited")
                         .HasColumnType("bit");
+
+                    b.Property<int>("MiniCategoryId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -323,6 +352,8 @@ namespace Mosdong.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
+
+                    b.HasIndex("MiniCategoryId");
 
                     b.HasIndex("SubCategoryId");
 
@@ -401,11 +432,32 @@ namespace Mosdong.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Mosdong.Models.MiniCategory", b =>
+                {
+                    b.HasOne("Mosdong.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Mosdong.Models.SubCategory", "SubCategory")
+                        .WithMany()
+                        .HasForeignKey("SubCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Mosdong.Models.ProductItemModel", b =>
                 {
                     b.HasOne("Mosdong.Models.Category", "Category")
                         .WithMany()
                         .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Mosdong.Models.MiniCategory", "MiniCategory")
+                        .WithMany()
+                        .HasForeignKey("MiniCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

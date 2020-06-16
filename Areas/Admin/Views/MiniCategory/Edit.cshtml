@@ -1,0 +1,149 @@
+﻿@model Mosdong.Models.ViewModels.AllCategoryViewModel
+@using Mosdong.Extensions
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="border backgroundWhite row">
+    <div class="col-12">
+        <h2 class="text-info">카테고리 3단계 편집</h2>
+        <br />
+        <partial name="_StatusMessage" model="Model.StatusMessage" />
+    </div>
+    <div class="col-8 border-right">
+        <form asp-action="Edit">
+            <input type="hidden" asp-for="MiniCategory.CategoryId" />
+            <input type="hidden" asp-for="MiniCategory.SubCategoryId" />
+            <input type="hidden" asp-for="MiniCategory.Id" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="MiniCategory.CategoryId" class="col-form-label"></label>
+                </div>
+                <div class="col-5">
+                    <select id="CategoryId" asp-for="MiniCategory.CategoryId" disabled asp-items="Model.CategoryList.ToSelectListItem(Model.MiniCategory.CategoryId)" class="form-control" style="width:300px"></select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="MiniCategory.SubCategoryId" class="col-form-label"></label>
+                </div>
+                <div class="col-9">
+                    <select id="SubCategoryId" asp-for="MiniCategory.SubCategoryId" disabled asp-items="Model.SubCategoryList.ToSelectListItem(Model.MiniCategory.SubCategoryId)" class="form-control" style="width:300px"></select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-3">
+                    <label asp-for="MiniCategory.Name" class="col-form-label"></label>
+                </div>
+                <div class="col-9">
+                    <input asp-for="MiniCategory.Name" class="form-control" style="width:300px">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-5 offset-3">
+                    <div class="row">
+                        <partial name="_EditAndBackToListButton" model="Model.MiniCategory.Id" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-4">
+        @if (Model.MiniCategoryList.Count() > 0)
+        {
+        <p>선택 카테고리 3단계 리스트</p>
+        <div id="MiniCategoryList">
+            <!--updateMiniCategoryLis-->
+        </div>
+        }
+    </div>
+</div>
+
+
+@section Scripts{
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var items = "<option value='0'>Select</option>";
+//            $('#SubCategoryId').html(items);
+            $('#MiniCategoryId').html(items);
+        });
+
+        $('#CategoryId').change(function () {
+            var url = '@Url.Content("~/")' + "Admin/SubCategory/GetSubCategory";
+            var ddlsource = "#CategoryId";
+            $.getJSON(url, { CategoryId: $(ddlsource).val() }, function (data) {
+                var items = '';
+                $('#SubCategoryId').empty();
+                $.each(data, function (i, subCategories) {
+                    items += "<option value = '" + subCategories.value + "'>" + subCategories.text + "</option>";
+                });
+
+                $('#SubCategoryId').html(items);
+
+            });
+        });
+
+        $('#SubCategoryId').change(function () {
+            var url = '@Url.Content("~/")' + "Admin/MiniCategory/GetMiniCategory";
+            var ddlsource = "#SubCategoryId";
+            $.getJSON(url, { SubCategoryId: $(ddlsource).val() }, function (data) {
+                var items = '';
+                $('#MiniCategoryId').empty();
+                $.each(data, function (i, miniCategories) {
+                    items += "<option value = '" + miniCategories.value + "'>" + miniCategories.text + "</option>";
+                });
+
+                $('#MiniCategoryId').html(items);
+
+            });
+        });
+
+    </script>
+
+    <script>
+        function updateMiniCategoryList() {
+            var subCategorySelected = document.getElementById("SubCategoryId").value;
+
+            $list = $('#MiniCategoryList');
+
+            $.ajax({
+                url: '/Admin/MiniCategory/GetMiniCategoryList/' + subCategorySelected,
+                type: 'GET',
+                dataType: 'text',
+                success: function (data) {
+                    results = JSON.parse(data);
+                    $list.html('');
+                    $list.append('<ul class="list-group">');
+                    for (i in results) {
+                        $list.append('<li class="list-group-item">' + results[i].text + '</li>');
+                    }
+                    $list.append('</ul>');
+                }
+            });
+        }
+
+        function emptyMiniCategoryList() {
+            $list = $('#MiniCategoryList');
+            $list.html('');
+        }
+
+        $(document).ready(function () {
+            updateMiniCategoryList();
+        });
+
+        $("#SubCategoryId").on("change", function () {
+            updateMiniCategoryList();
+        });
+
+        $("#CategoryId").on("change", function () {
+            emptyMiniCategoryList();
+        });
+
+    </script>
+
+}

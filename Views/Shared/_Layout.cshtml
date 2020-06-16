@@ -4,10 +4,14 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>한국상점 모스동</title>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/StyleSheet.css" />
-    <script src="https://kit.fontawesome.com/8cc909eb3b.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="~/DataTables/datatables.min.css" />
+
+
     <style>
         .dropdown-hover-all .dropdown-menu, .dropdown-hover > .dropdown-menu {
             margin: 0
@@ -34,8 +38,14 @@
                                         상점 관리
                                     </a>
                                     <div class="dropdown-menu" aria-labelledby="dropdown00">
-                                        <a class="dropdown-item" asp-action="Index" asp-controller="Category" asp-area="Admin">카테고리</a>
-                                        <a class="dropdown-item" asp-action="Index" asp-controller="SubCategory" asp-area="Admin">하위 카테고리</a>
+                                        <div class="dropdown dropright">
+                                            <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">카테고리</a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
+                                                <a class="dropdown-item" asp-action="Index" asp-controller="Category" asp-area="Admin">카테고리 1</a>
+                                                <a class="dropdown-item" asp-action="Index" asp-controller="SubCategory" asp-area="Admin">카테고리 2</a>
+                                                <a class="dropdown-item" asp-action="Index" asp-controller="MiniCategory" asp-area="Admin">카테고리 3</a>
+                                            </div>
+                                        </div>
                                         <a class="dropdown-item" asp-action="Index" asp-controller="ProductItem" asp-area="Admin">상품목록</a>
                                         <a class="dropdown-item" asp-action="Index" asp-controller="Coupon" asp-area="Admin">쿠폰목록</a>
                                         <a class="dropdown-item">Users</a>
@@ -85,6 +95,11 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://cdn.tiny.cloud/1/6jljvrt59k204g0az00spikzz4cfbk1jwbvqsk3rbwvrglt4/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+    <script type="text/javascript" charset="utf8" src="~/DataTables/datatables.js"></script>
+
+    <script src="https://kit.fontawesome.com/8cc909eb3b.js" crossorigin="anonymous"></script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

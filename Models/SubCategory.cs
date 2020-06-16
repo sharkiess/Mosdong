@@ -9,11 +9,11 @@ namespace Mosdong.Models
         public int Id { get; set; }
 
         [Required(ErrorMessage = "필수 입력 사항입니다.")]
-        [Display(Name = "하위카테고리")]
+        [Display(Name = "카테고리 2")]
         public string Name { get; set; }
 
         [Required]
-        [Display(Name = "카테고리")]
+        [Display(Name = "카테고리 1")]
         public int CategoryId { get; set; }
 
         [ForeignKey("CategoryId")]

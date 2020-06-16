@@ -72,6 +72,18 @@
 
 <div class="container col-12">
             <div class="row" id="NewItems">
-                <partial name="_IndexNewItemsPartial" model="@Model.ProductItem" />
+                <partial name="_IndexNewItemsPartial" model="@Model.ProductItem.Where(p => p.ProductAd == "1" && p.IsNotVisible == false)" />
             </div>
+</div>
+
+<div class="container col-12">
+    <div class="row" id="NewItems">
+        <partial name="_IndexHitItemsPartial" model="@Model.ProductItem.Where(p => p.ProductAd == "2" && p.IsNotVisible == false)" />
+    </div>
+</div>
+
+<div class="container col-12">
+    <div class="row" id="NewItems">
+        <partial name="_IndexTryItemsPartial" model="@Model.ProductItem.Where(p => p.ProductAd == "3" && p.IsNotVisible == false)" />
+    </div>
 </div>

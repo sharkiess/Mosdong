@@ -19,40 +19,53 @@
         @if (Model.Count() > 0)
         {
 
-            <table class="table table-hover">
-                <tr class="table-dark">
-                    <th scope="col">
-                        @Html.DisplayNameFor(m => m.Name)
-                    </th>
-                    <th scope="col">
-                        @Html.DisplayNameFor(m => m.Price)
-                    </th>
-                    <th scope="col">
-                        @Html.DisplayNameFor(m => m.CategoryId)
-                    </th>
-                    <th scope="col">
-                        @Html.DisplayNameFor(m => m.SubCategoryId)
-                    </th>
-                    <th scope="col"></th>
-                </tr>
-                @foreach (var item in Model)
-                {
-            <tr>
-                <td>
-                    @Html.DisplayFor(m => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(m => item.Price)
-                </td>
-                <td>
-                    @Html.DisplayFor(m => item.Category.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(m => item.SubCategory.Name)
-                </td>
-                <partial name="_EditAndDeleteButton" model="item.Id" />
-            </tr>
-                }
+            <table id="admin_product_table" class="display">
+                <thead>
+                    <tr class="table-dark">
+                        <th>
+                            @Html.DisplayNameFor(m => m.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.Price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.CategoryId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(m => m.SubCategoryId)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(m => item.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.Price)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.Category.Name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(m => item.SubCategory.Name)
+                            </td>
+                            <partial name="_EditAndDeleteButton" model="item.Id" />
+                        </tr>
+                    }
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>@Html.DisplayNameFor(m => m.Name)</td>
+                        <td>@Html.DisplayNameFor(m => m.Price)</td>
+                        <td>@Html.DisplayNameFor(m => m.CategoryId)</td>
+                        <td>@Html.DisplayNameFor(m => m.SubCategoryId)</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
             </table>
         }
         else
@@ -61,5 +74,7 @@
         }
     </div>
 </div>
+
+
 
 

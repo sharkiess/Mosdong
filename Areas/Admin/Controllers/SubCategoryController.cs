@@ -76,14 +76,18 @@ namespace Mosdong.Areas.Admin.Controllers
         }
         
         [ActionName("GetSubCategory")]
-        public async Task<IActionResult> GetSubCategory(int id)
+        public JsonResult GetSubCategory(int CategoryId)
         {
-            List<SubCategory> subCategories = new List<SubCategory>();
-            subCategories = await (from subCategory in _db.SubCategory
+            List<SubCategory> subCategoryList = new List<SubCategory>();
+            subCategoryList = (from subCategory in _db.SubCategory
                                    orderby subCategory.Name
-                                   where subCategory.CategoryId == id
-                                   select subCategory).ToListAsync();
-            return Json(new SelectList(subCategories, "Id", "Name"));
+                                   where subCategory.CategoryId == CategoryId
+                                   select subCategory).ToList();
+
+            //Inserting Select Item in List
+            subCategoryList.Insert(0, new SubCategory { Id = 0, Name = "Select" });
+
+            return Json(new SelectList(subCategoryList, "Id", "Name"));
         }
 
         //GET - Edit
@@ -99,6 +103,7 @@ namespace Mosdong.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            
             SubCategoryAndCategoryViewModel model = new SubCategoryAndCategoryViewModel()
             {
                 CategoryList = await _db.Category.ToListAsync(),

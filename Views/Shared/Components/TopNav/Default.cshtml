@@ -8,10 +8,29 @@
             <a class="nav-link dropdown-toggle" href="#" id="dropdown_@Html.DisplayFor(m => item.Id)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-store col-1"></i>  @Html.DisplayFor(m => item.Name)</a>
             <div class="dropdown-menu" id="nav@Html.DisplayFor(m => item.CategoryId)" aria-labelledby="dropdown_@Html.DisplayFor(m => item.Id)">
 
-                    @foreach (var sub in Model.NavSubCategory.Where(s => s.CategoryId == item.Id))
+                @foreach (var sub in Model.NavSubCategory.Where(s => s.CategoryId == item.Id))
+                {
+                <div class="dropdown dropright">
+                    @if (Model.NavMiniCategory.Where(n => n.SubCategoryId == sub.Id).Count() > 0)
                     {
-                        <a class="dropdown-item" href="#">@Html.DisplayFor(s => sub.Name)</a>
+
+                        <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">@Html.DisplayFor(s => sub.Name)</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
+                            @foreach (var mini in Model.NavMiniCategory.Where(n => n.SubCategoryId == sub.Id))
+                            {
+                            <a class="dropdown-item" asp-area="Customer" asp-controller="Product" asp-action="Index" asp-route-id="@mini.Id" asp-route-category="mini">@mini.Name</a>
+                            }
+                        </div>
+
                     }
+
+                    else
+                    {
+                        <a class="dropdown-item" asp-route-id="@sub.Id" asp-action="Index" asp-controller="Product" asp-area="Customer">@Html.DisplayFor(s => sub.Name)</a>
+                    }
+
+                </div>
+                }
 
             </div>
         </li>

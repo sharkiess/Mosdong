@@ -59,19 +59,23 @@ namespace Mosdong.Models
         [Display(Name = "상품이미지")]
         public string Image { get; set; }
 
-        [Display(Name = "카테고리명")]
+        [Display(Name = "카테고리 1")]
         public int CategoryId { get; set; }
         
         [ForeignKey("CategoryId")]
         public virtual Category Category { get; set; }
 
-        [Display(Name = "하위 카테고리명")]
+        [Display(Name = "카테고리 2")]
         public int SubCategoryId { get; set; }
 
         [ForeignKey("SubCategoryId")]
         public virtual SubCategory SubCategory { get; set; }
 
+        [Display(Name = "카테고리 3")]
+        public int MiniCategoryId { get; set; }
 
+        [ForeignKey("MiniCategoryId")]
+        public virtual MiniCategory MiniCategory { get; set; }
 
     }
 }

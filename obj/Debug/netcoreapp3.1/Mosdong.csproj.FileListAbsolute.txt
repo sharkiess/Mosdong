@@ -488,7 +488,6 @@ C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CreateButton.
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_DeleteAndBackToListButton.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EditAndBackToListButton.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_EditAndDeleteButton.cshtml.g.cs
-C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Mosdong.csprojAssemblyReference.cache
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout_backup.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\TopNav\Default.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\ProductItem\Delete.cshtml.g.cs
@@ -497,3 +496,10 @@ C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Coupon\Cr
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Coupon\Edit.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Coupon\Delete.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_IndexNewItemsPartial.cshtml.g.cs
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_IndexHitItemsPartial.cshtml.g.cs
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_IndexTryItemsPartial.cshtml.g.cs
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\MiniCategory\Index.cshtml.g.cs
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\MiniCategory\Create.cshtml.g.cs
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Mosdong.csprojAssemblyReference.cache
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\MiniCategory\Edit.cshtml.g.cs
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\MiniCategory\Delete.cshtml.g.cs

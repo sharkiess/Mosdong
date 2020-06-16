@@ -30,7 +30,7 @@
                 <label asp-for="ProductItem.CategoryId" class="col-form-label"></label>
             </div>
             <div class="col-9">
-                <select asp-for="@Model.ProductItem.CategoryId" id="CategoryId" asp-items="Model.Category.ToSelectListItem(Model.ProductItem.CategoryId)" class="form-control" style="width:300px"></select>
+                <select asp-for="@Model.ProductItem.CategoryId" id="CategoryId" asp-items="@(new SelectList(@ViewBag.ListofCategory,"Id","Name"))" class="form-control" style="width:300px"></select>
             </div>
         </div>
         <div class="form-group row">
@@ -38,7 +38,15 @@
                 <label asp-for="ProductItem.SubCategoryId" class="col-form-label"></label>
             </div>
             <div class="col-9">
-                <select asp-for="@Model.ProductItem.SubCategoryId" name="SubCategoryId" id="SubCategoryId" asp-items="@(new SelectList(string.Empty,"Id","Name"))" class="form-control" style="width:300px"></select>
+                <select asp-for="@Model.ProductItem.SubCategoryId" name="SubCategoryId" id="SubCategoryId" asp-items="@(new SelectList(@ViewBag.ListofSubCategory,"Id","Name"))" class="form-control" style="width:300px"></select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="ProductItem.MiniCategoryId" class="col-form-label"></label>
+            </div>
+            <div class="col-9">
+                <select asp-for="@Model.ProductItem.MiniCategoryId" name="MiniCategoryId" id="MiniCategoryId" asp-items="@(new SelectList(@ViewBag.ListofMiniCategory,"Id","Name"))" class="form-control" style="width:300px"></select>
             </div>
         </div>
         <div class="form-group row">
@@ -175,26 +183,43 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            getSubCategory();
-            $('#CategoryId').change(function () {
-                getSubCategory();
-            });
+            var items = "<option value='0'>Select</option>";
+            //$('#SubCategoryId').html(items);
+            //$('#MiniCategoryId').html(items);
         });
 
-        function getSubCategory() {
+        $('#CategoryId').change(function () {
             var url = '@Url.Content("~/")' + "Admin/SubCategory/GetSubCategory";
-            var ddlsource = '#CategoryId';
-            $.getJSON(url, { id: $(ddlsource).val() }, function (data) {
+            var ddlsource = "#CategoryId";
+            $.getJSON(url, { CategoryId: $(ddlsource).val() }, function (data) {
                 var items = '';
                 $('#SubCategoryId').empty();
-                $.each(data, function (i, subcategory) {
-                    items += "<option value = '" + subcategory.value + "'>" + subcategory.text + "</option>";
+                $.each(data, function (i, subCategories) {
+                    items += "<option value = '" + subCategories.value + "'>" + subCategories.text + "</option>";
                 });
 
                 $('#SubCategoryId').html(items);
-            })
-        }
+
+            });
+        });
+
+        $('#SubCategoryId').change(function () {
+            var url = '@Url.Content("~/")' + "Admin/MiniCategory/GetMiniCategory";
+            var ddlsource = "#SubCategoryId";
+            $.getJSON(url, { SubCategoryId: $(ddlsource).val() }, function (data) {
+                var items = '';
+                $('#MiniCategoryId').empty();
+                $.each(data, function (i, miniCategories) {
+                    items += "<option value = '" + miniCategories.value + "'>" + miniCategories.text + "</option>";
+                });
+
+                $('#MiniCategoryId').html(items);
+
+            });
+        });
+
     </script>
+
 
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 

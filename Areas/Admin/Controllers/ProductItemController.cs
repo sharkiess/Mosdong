@@ -27,21 +27,30 @@ namespace Mosdong.Areas.Admin.Controllers
         {
             _db = db;
             _hostEnvironment = hostEnvironment;
+            
             ProductItemVM = new ProductItemViewModel()
             {
                 Category = _db.Category,
+                SubCategory = _db.SubCategory,
+                MiniCategory = _db.MiniCategory,
                 ProductItem = new Models.ProductItemModel()
             };
         }
-        
         public async Task<IActionResult> Index()
         {
-            var productItems = await _db.ProductItem.Include(m=>m.Category).Include(m => m.SubCategory).ToListAsync();
+            var productItems = await _db.ProductItem.Include(m => m.Category).Include(m => m.SubCategory).ToListAsync();
             return View(productItems);
         }
 
         //GET - Create
         public IActionResult Create() {
+            
+            List<Category> categoryList = new List<Category>();
+            categoryList = (from category in _db.Category
+                            select category).ToList();
+            categoryList.Insert(0, new Category { Id = 0, Name = "Select" });
+            ViewBag.ListofCategory = categoryList;
+
             return View(ProductItemVM);
         }
 
@@ -50,9 +59,11 @@ namespace Mosdong.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreatePOST()
         {
+            
             ProductItemVM.ProductItem.SubCategoryId = Convert.ToInt32(Request.Form["SubCategoryId"].ToString());
+            ProductItemVM.ProductItem.MiniCategoryId = Convert.ToInt32(Request.Form["MiniCategoryId"].ToString());
 
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return View(ProductItemVM);
             }
@@ -100,6 +111,24 @@ namespace Mosdong.Areas.Admin.Controllers
                 return NotFound();
             }
 
+            List<Category> categoryList = new List<Category>();
+            categoryList = (from category in _db.Category
+                            select category).ToList();
+            categoryList.Insert(0, new Category { Id = 0, Name = "Select" });
+            ViewBag.ListofCategory = categoryList;
+
+            List<SubCategory> subCategoryList = new List<SubCategory>();
+            subCategoryList = (from subCategory in _db.SubCategory
+                            select subCategory).ToList();
+            subCategoryList.Insert(0, new SubCategory { Id = 0, Name = "Select" });
+            ViewBag.ListofSubCategory = subCategoryList;
+
+            List<MiniCategory> miniCategoryList = new List<MiniCategory>();
+            miniCategoryList = (from miniCategory in _db.MiniCategory
+                                select miniCategory).ToList();
+            miniCategoryList.Insert(0, new MiniCategory { Id = 0, Name = "Select" });
+            ViewBag.ListofMiniCategory = miniCategoryList;
+
             ProductItemVM.ProductItem = await _db.ProductItem.Include(p => p.Category).Include(p => p.SubCategory).SingleOrDefaultAsync(p=>p.Id==id);
             ProductItemVM.SubCategory = await _db.SubCategory.Where(s => s.CategoryId == ProductItemVM.ProductItem.CategoryId).ToListAsync();
 
@@ -120,10 +149,13 @@ namespace Mosdong.Areas.Admin.Controllers
                 return NotFound();
             }
             ProductItemVM.ProductItem.SubCategoryId = Convert.ToInt32(Request.Form["SubCategoryId"].ToString());
+            ProductItemVM.ProductItem.MiniCategoryId = Convert.ToInt32(Request.Form["MiniCategoryId"].ToString());
+
 
             if (!ModelState.IsValid)
             {
                 ProductItemVM.SubCategory = await _db.SubCategory.Where(s => s.CategoryId == ProductItemVM.ProductItem.CategoryId).ToListAsync();
+                ProductItemVM.MiniCategory = await _db.MiniCategory.Where(m => m.SubCategoryId == ProductItemVM.ProductItem.SubCategoryId).ToListAsync();
                 return View(ProductItemVM);
             }
 
@@ -169,6 +201,7 @@ namespace Mosdong.Areas.Admin.Controllers
             productItemFromDb.IsStockUnlimited = ProductItemVM.ProductItem.IsStockUnlimited;
             productItemFromDb.CategoryId = ProductItemVM.ProductItem.CategoryId;
             productItemFromDb.SubCategoryId = ProductItemVM.ProductItem.SubCategoryId;
+            productItemFromDb.MiniCategoryId = ProductItemVM.ProductItem.MiniCategoryId;
 
             await _db.SaveChangesAsync();
 

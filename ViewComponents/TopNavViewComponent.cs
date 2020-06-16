@@ -23,9 +23,10 @@ namespace Mosdong.ViewComponents
 
             NavListViewModel model = new NavListViewModel
             {
-                NavCategory = await _db.Category.ToListAsync(),
-                SubCategory = new Models.SubCategory(),
-                NavSubCategory = await _db.SubCategory.OrderBy(p => p.Name).ToListAsync()
+                NavCategory = await _db.Category.ToListAsync(),                
+                NavSubCategory = await _db.SubCategory.OrderBy(p => p.Name).ToListAsync(),
+                NavMiniCategory = await _db.MiniCategory.OrderBy(m => m.Name).ToListAsync(),
+                SubCategory = new Models.SubCategory()
             };
 
             return View(model);
