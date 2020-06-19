@@ -28,27 +28,34 @@ using Mosdong.Models;
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\Admin\Mosdong\Views\_ViewImports.cshtml"
-using System.ComponentModel.DataAnnotations;
+using Mosdong.Models.ViewModels;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 4 "C:\Users\Admin\Mosdong\Views\_ViewImports.cshtml"
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 5 "C:\Users\Admin\Mosdong\Views\_ViewImports.cshtml"
+using System.ComponentModel.DataAnnotations.Schema;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\Users\Admin\Mosdong\Views\_ViewImports.cshtml"
 using Microsoft.EntityFrameworkCore;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"efb06aa87b0d77443d0de5d5baa7ee1a62cbb10e", @"/Views/Shared/_IndexTryItemsPartial.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e5b2722ce51c13a8e00c23efbd532089ca66b24e", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2157950a48fdf5d2616e71a321b8f403d36d9664", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__IndexTryItemsPartial : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<ProductItemModel>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "Details", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -102,7 +109,7 @@ using Microsoft.EntityFrameworkCore;
 #line hidden
 #nullable disable
             WriteLiteral("                        <div class=\"col-auto\">\r\n                                <div>\r\n                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "efb06aa87b0d77443d0de5d5baa7ee1a62cbb10e5225", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "efb06aa87b0d77443d0de5d5baa7ee1a62cbb10e5388", async() => {
                 WriteLiteral("\r\n                                    <img");
                 BeginWriteAttribute("src", " src=\"", 757, "\"", 777, 1);
 #nullable restore
@@ -144,7 +151,7 @@ WriteAttributeValue("", 763, product.Image, 763, 14, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                                </div>\r\n                                <div>\r\n                                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "efb06aa87b0d77443d0de5d5baa7ee1a62cbb10e8118", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "efb06aa87b0d77443d0de5d5baa7ee1a62cbb10e8281", async() => {
                 WriteLiteral("\r\n                                        <text class=\"text-primary\" style=\"font-size:18px;\">");
 #nullable restore
 #line 21 "C:\Users\Admin\Mosdong\Views\Shared\_IndexTryItemsPartial.cshtml"

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,7 @@ using Mosdong.Utility;
 namespace Mosdong.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.ManagerUser)]
     public class ProductItemController : Controller
     {
         private readonly ApplicationDbContext _db;

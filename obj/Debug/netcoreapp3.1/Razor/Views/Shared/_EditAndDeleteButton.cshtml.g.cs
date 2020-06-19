@@ -28,27 +28,34 @@ using Mosdong.Models;
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\Admin\Mosdong\Views\_ViewImports.cshtml"
-using System.ComponentModel.DataAnnotations;
+using Mosdong.Models.ViewModels;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 4 "C:\Users\Admin\Mosdong\Views\_ViewImports.cshtml"
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 5 "C:\Users\Admin\Mosdong\Views\_ViewImports.cshtml"
+using System.ComponentModel.DataAnnotations.Schema;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\Users\Admin\Mosdong\Views\_ViewImports.cshtml"
 using Microsoft.EntityFrameworkCore;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e4ea0a02c1dd835b14e38eebd543e274c408b39a", @"/Views/Shared/_EditAndDeleteButton.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e5b2722ce51c13a8e00c23efbd532089ca66b24e", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2157950a48fdf5d2616e71a321b8f403d36d9664", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__EditAndDeleteButton : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<int>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("btn btn-outline-primary"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -80,7 +87,7 @@ using Microsoft.EntityFrameworkCore;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("\r\n<td style=\"text-align:right;\">\r\n    <div class=\"btn-group\" role=\"group\">\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e4ea0a02c1dd835b14e38eebd543e274c408b39a4984", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e4ea0a02c1dd835b14e38eebd543e274c408b39a5147", async() => {
                 WriteLiteral("\r\n            <i class=\"fas fa-edit\">수정</i>\r\n        ");
             }
             );
@@ -112,7 +119,7 @@ using Microsoft.EntityFrameworkCore;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e4ea0a02c1dd835b14e38eebd543e274c408b39a7282", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e4ea0a02c1dd835b14e38eebd543e274c408b39a7445", async() => {
                 WriteLiteral("\r\n            <i class=\"fas fa-trash-alt\">삭제</i>\r\n        ");
             }
             );

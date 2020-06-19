@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Mosdong.Utility
+<!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="utf-8" />
@@ -25,57 +26,82 @@
         <div class="lottemartdream">
             <div class="container">
                 <nav class="navbar navbar-dark navbar-expand-lg navbar-toggleable-sm bg-primary mainmenu">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><text style="font-family:LotteMartDream">한국상점</text> <text style="font-family:Binggrae-Bold">모스동</text><span class="sr-only">(current)</span></a>
+                    <a class="navbar-brand" asp-area="Customer" asp-controller="Home" asp-action="Index"><text style="font-family:LotteMartDream">한국상점</text> <text style="font-family:Binggrae-Bold">모스동</text><span class="sr-only">(current)</span></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                        <partial name="_LoginPartial" />
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav flex-grow-1">
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="#" id="dropdown00" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        상점 관리
-                                    </a>
-                                    <div class="dropdown-menu" aria-labelledby="dropdown00">
-                                        <div class="dropdown dropright">
-                                            <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">카테고리</a>
-                                            <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
-                                                <a class="dropdown-item" asp-action="Index" asp-controller="Category" asp-area="Admin">카테고리 1</a>
-                                                <a class="dropdown-item" asp-action="Index" asp-controller="SubCategory" asp-area="Admin">카테고리 2</a>
-                                                <a class="dropdown-item" asp-action="Index" asp-controller="MiniCategory" asp-area="Admin">카테고리 3</a>
-                                            </div>
-                                        </div>
-                                        <a class="dropdown-item" asp-action="Index" asp-controller="ProductItem" asp-area="Admin">상품목록</a>
-                                        <a class="dropdown-item" asp-action="Index" asp-controller="Coupon" asp-area="Admin">쿠폰목록</a>
-                                        <a class="dropdown-item">Users</a>
-                                        <div class="dropdown-divider"></div>
-                                        <div class="dropdown dropright">
-                                            <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Layouts</a>
-                                            <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
-                                                <a class="dropdown-item" href="#">Basic</a>
-                                                <a class="dropdown-item" href="#">Compact Aside</a>
+                        <ul class="navbar-nav">
+                            <partial name="_LoginPartial" />
+                        </ul>
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav flex-grow-1">
+                                    @if (User.IsInRole(SD.ManagerUser))
+                                    {
+                                        <li class="nav-item dropdown">
+                                            <a class="nav-link dropdown-toggle" href="#" id="dropdown00" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                상점 관리
+                                            </a>
+                                            <div class="dropdown-menu" aria-labelledby="dropdown00">
+                                                <div class="dropdown dropright">
+                                                    <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">카테고리</a>
+                                                    <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
+                                                        <a class="dropdown-item" asp-action="Index" asp-controller="Category" asp-area="Admin">카테고리 1</a>
+                                                        <a class="dropdown-item" asp-action="Index" asp-controller="SubCategory" asp-area="Admin">카테고리 2</a>
+                                                        <a class="dropdown-item" asp-action="Index" asp-controller="MiniCategory" asp-area="Admin">카테고리 3</a>
+                                                    </div>
+                                                </div>
+                                                <a class="dropdown-item" asp-action="Index" asp-controller="ProductItem" asp-area="Admin">상품목록</a>
+                                                <a class="dropdown-item" asp-action="Index" asp-controller="Coupon" asp-area="Admin">쿠폰목록</a>
+                                                <a class="dropdown-item" asp-action="Index" asp-controller="User" asp-area="Admin">직원계정</a>
                                                 <div class="dropdown-divider"></div>
                                                 <div class="dropdown dropright">
-                                                    <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Custom</a>
+                                                    <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Layouts</a>
                                                     <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
-                                                        <a class="dropdown-item" href="#">Fullscreen</a>
-                                                        <a class="dropdown-item" href="#">Empty</a>
+                                                        <a class="dropdown-item" href="#">Basic</a>
+                                                        <a class="dropdown-item" href="#">Compact Aside</a>
                                                         <div class="dropdown-divider"></div>
-                                                        <a class="dropdown-item" href="#">Magic</a>
+                                                        <div class="dropdown dropright">
+                                                            <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Custom</a>
+                                                            <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
+                                                                <a class="dropdown-item" href="#">Fullscreen</a>
+                                                                <a class="dropdown-item" href="#">Empty</a>
+                                                                <div class="dropdown-divider"></div>
+                                                                <a class="dropdown-item" href="#">Magic</a>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </li>
-                                @await Component.InvokeAsync("TopNav")
-                            </ul>
-                        </div>
-                    </div>
+                                        </li>
+                                    }
+
+                                    @await Component.InvokeAsync("TopNav")
+
+
+                                </ul>
+                            </div>
+</div>
                 </nav>
             </div>
-            <div class="container">검색창</div>
+            <div class="container">
+                <div class="row py-3">
+                    <div class="input-group col-9 form-inline">
+                       
+                            <input type="text" class="form-control" placeholder="검색어를 입력하세요">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">&nbsp;<i class="fas fa-search"></i></button>
+                            </div>
+
+                        
+                    </div>
+                    <div class="col-3 text-right">
+                        <a href="#" style="font-size:16pt;text-decoration:none">
+                            <i class="fas fa-shopping-cart"></i>(0)
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
     <div class="container">

@@ -1,16 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Mosdong.Data;
 using Mosdong.Models;
 using Mosdong.Models.ViewModels;
+using Mosdong.Utility;
 
 namespace Mosdong.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = SD.ManagerUser)]
     public class SubCategoryController : Controller
     {
         private readonly ApplicationDbContext _db;

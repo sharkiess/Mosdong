@@ -28,27 +28,34 @@ using Mosdong.Models;
 #nullable disable
 #nullable restore
 #line 3 "C:\Users\Admin\Mosdong\Views\_ViewImports.cshtml"
-using System.ComponentModel.DataAnnotations;
+using Mosdong.Models.ViewModels;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 4 "C:\Users\Admin\Mosdong\Views\_ViewImports.cshtml"
-using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 5 "C:\Users\Admin\Mosdong\Views\_ViewImports.cshtml"
+using System.ComponentModel.DataAnnotations.Schema;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\Users\Admin\Mosdong\Views\_ViewImports.cshtml"
 using Microsoft.EntityFrameworkCore;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4458f0d63b21c1a032cd8801a56fea5bb933fb82", @"/Views/Shared/_StatusMessage.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e5b2722ce51c13a8e00c23efbd532089ca66b24e", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2157950a48fdf5d2616e71a321b8f403d36d9664", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared__StatusMessage : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<string>
     {
         #pragma warning disable 1998

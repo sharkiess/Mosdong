@@ -33,17 +33,22 @@ namespace Mosdong
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddLocalization(options => options.ResourcesPath = "Resources");
-
             services.AddMvc()
-                    .AddDataAnnotationsLocalization();
-
-
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix)
+                .AddDataAnnotationsLocalization(options =>
+                {
+                    options.DataAnnotationLocalizerProvider = (type, factory) =>
+                        factory.Create(typeof(SharedResource));
+                });
 
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            services.AddIdentity<IdentityUser,IdentityRole>()
+                .AddDefaultTokenProviders()
+                .AddDefaultUI()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews(options =>
             {
@@ -85,12 +90,12 @@ namespace Mosdong
                 // UI strings that we have localized.
                 SupportedUICultures = supportedCultures
             });
-            
+
             app.UseStaticFiles();
 
             app.UseAuthentication();
             app.UseHttpsRedirection();
-            
+
             app.UseRouting();
             app.UseAuthorization();
 

@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Mosdong.Models;
+using Mosdong.Models.ViewModels;
 
 namespace Mosdong.Data
 {
@@ -19,5 +20,6 @@ namespace Mosdong.Data
         public DbSet<MiniCategory> MiniCategory { get; set; }
         public DbSet<ProductItemModel> ProductItem { get; set; }
         public DbSet<Coupon> Coupon { get; set; }
+        public DbSet<ApplicationUser> ApplicationUser { get; set; }
     }
 }
