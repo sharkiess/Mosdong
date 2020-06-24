@@ -46,7 +46,8 @@ namespace Mosdong.Areas.Admin.Controllers
             categoryList = (from category in _db.Category
                             select category).ToList();
             categoryList.Insert(0, new Category { Id = 0, Name = "Select" });
-            ViewBag.ListofCategory = categoryList;
+            ViewBag.
+                Category = categoryList;
 
             List<SubCategory> subCategoryList = new List<SubCategory>();
             subCategoryList = (from subCategory in _db.SubCategory

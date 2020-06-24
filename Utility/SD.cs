@@ -12,5 +12,8 @@ namespace Mosdong.Utility
         public const string PartnerUser  = "Partner";
         public const string FrontDeskUser = "FrontDesk";
         public const string CustomerEndUser = "Customer";
+
+        public const string ssShopingCartCount = "ssCartCount";
     }
 }
+  

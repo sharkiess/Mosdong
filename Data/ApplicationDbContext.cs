@@ -21,5 +21,6 @@ namespace Mosdong.Data
         public DbSet<ProductItemModel> ProductItem { get; set; }
         public DbSet<Coupon> Coupon { get; set; }
         public DbSet<ApplicationUser> ApplicationUser { get; set; }
+        public DbSet<ShoppingCart> ShoppingCart { get; set; }
     }
 }

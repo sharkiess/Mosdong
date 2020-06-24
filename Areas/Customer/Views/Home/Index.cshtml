@@ -69,6 +69,11 @@
 </div>
 
 
+<div class="container col-12">
+    <div class="row" id="SaleItems">
+        <partial name="_IndexSaleItemsPartial" model="@Model.ProductItem.Where(p => p.SalePrice != 0 && p.IsNotVisible == false)" />
+    </div>
+</div>
 
 <div class="container col-12">
             <div class="row" id="NewItems">
@@ -77,13 +82,13 @@
 </div>
 
 <div class="container col-12">
-    <div class="row" id="NewItems">
+    <div class="row" id="HitItems">
         <partial name="_IndexHitItemsPartial" model="@Model.ProductItem.Where(p => p.ProductAd == "2" && p.IsNotVisible == false)" />
     </div>
 </div>
 
 <div class="container col-12">
-    <div class="row" id="NewItems">
+    <div class="row" id="TryItems">
         <partial name="_IndexTryItemsPartial" model="@Model.ProductItem.Where(p => p.ProductAd == "3" && p.IsNotVisible == false)" />
     </div>
 </div>

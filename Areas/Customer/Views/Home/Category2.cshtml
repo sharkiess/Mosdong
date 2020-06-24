@@ -1,0 +1,136 @@
+﻿@model IEnumerable<ProductItemModel>
+
+
+<div class="border backgroundWhite">
+    <div class="row">
+        <div class="col-12">
+
+            @if (Model.Count() > 0)
+            {
+                <div class="container">
+                    <!--BreadCrums starts-->
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a asp-action="Index">Home</a></li>
+                            @foreach (var item in Model.Where(item => item.IsNotVisible == false).Take(1))
+                            {
+                                <li class="breadcrumb-item"><a asp-action="Category1" asp-controller="Home" asp-area="Customer" asp-route-id="@Html.DisplayFor(m => item.SubCategory.Id)">@Html.DisplayFor(m => item.Category.Name)</a></li>
+                                <li class="breadcrumb-item">@item.SubCategory.Name</li>
+                            }
+                        </ol>
+                    </nav>
+                    <!--BreadCrums ends-->
+                </div>
+                <div class="container">
+
+                    @foreach (var item in Model.Where(item => item.IsNotVisible == false))
+                    {
+                        <div class="row">
+                            <div class="col-4 d-md-none">
+                                <a asp-area="Customer" asp-controller="Home" asp-action="Details" asp-route-id="@item.Id">
+                                    <img src="@item.Image" width="100" height="100" style="border-radius:5px;border: 1px solid #ffffff;" />
+                                </a>
+                            </div>
+                            <div class="col-4 d-none d-md-block">
+                                <a asp-area="Customer" asp-controller="Home" asp-action="Details" asp-route-id="@item.Id">
+                                    <img src="@item.Image" width="200" height="200" style="border-radius:5px;border: 1px solid #ffffff;" />
+                                </a>
+                            </div>
+                            <div class="col-8">
+                                <div class="col-12">
+                                    <text class="text-info">
+                                        <a asp-area="Customer" asp-controller="Home" asp-action="Details" asp-route-id="@item.Id">
+                                            @item.Name
+                                        </a>
+                                    </text>
+                                    <br>
+                                    @{
+                                        if (item.SalePrice == 0)
+                                        //할인행사 없을 때
+                                        {
+                                            <b style="color:dimgray;font-size:large">@item.Price 루블</b>
+                                        }
+                                        //할인행사 있을 때
+                                        else
+                                        {
+                                            <b style="color:darkred;font-size:large"><span class="badge badge-pill badge-danger">Sale</span> @item.SalePrice 루블</b>
+                                            <b style="font-size:small"><del>@item.Price 루블</del></b>
+                                        }
+                                    }
+                                </div>
+                                <div class="col-12 d-none d-md-block">
+                                    <div class="row p-3">
+
+                                        @if (@item.IsStockUnlimited == true)
+                                        {
+                                            <b>재고무제한</b>
+                                        }
+                                        else
+                                        {
+                                            <b>재고수량 &nbsp; @item.StockAvailabilityNum &nbsp;@item.ProductUnit</b>
+
+                                        }
+
+                                    </div>
+                                </div>
+                                <div class="row d-inline">
+                                    <form method="post">
+                                        <div class="col-12 text-right">
+
+                                            @{ if (item.StockAvailability == "0" && item.IsStockUnlimited == true)
+                                                {
+                                                    <input class="text-left" style="width:50px">
+                                                    <button type="submit" value="장바구니" class="btn btn-primary">
+                                                        장바구니
+                                                    </button>
+                                                }
+                                                else if (item.StockAvailabilityNum != 0)
+                                                {
+                                                    switch (item.StockAvailability)
+                                                    {
+                                                        case "0":
+                                                            <input class="text-left" style="width:50px">
+                                                            <button type="submit" value="장바구니" class="btn btn-primary">
+                                                                장바구니
+                                                            </button>
+                                                            break;
+                                                        case "1":
+                                                            <a href="#" value="품절" class="btn btn-dark">
+                                                                품절
+                                                            </a>
+                                                            break;
+                                                        case "2":
+                                                            <a href="#" value="입고예정" class="btn btn-dark">
+                                                                입고예정
+                                                            </a>
+                                                            break;
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <a href="#" value="품절" class="btn btn-dark">
+                                                        품절
+                                                    </a>
+                                                }
+                                            }
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                    }
+
+                </div>
+
+            }
+            else
+            {
+                <p>판매중인 상품 리스트가 존재하지 않습니다.</p>
+            }
+
+        </div>
+    </div>
+</div>
+

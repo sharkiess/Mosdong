@@ -1,0 +1,56 @@
+﻿@model IEnumerable<ProductItemModel>
+
+@if (Model.Count() > 0)
+{
+         <div class="border border-info rounded col-12" style="margin-bottom:10px; margin-top:10px; padding:10px">
+            
+             <h5 class="text-dark"><span class="badge badge-pill badge-danger">Sale</span> &nbsp;할인행사 상품</h5>
+            
+             <div class="row">
+
+                 @foreach (var product in Model.Where(p => p.SalePrice != 0 && p.IsNotVisible == false).OrderByDescending(p => p.Id).Take(5))
+                 {
+                     <div class="col-auto">
+                         <div>
+                             <a asp-action="Details" class="text-info" asp-route-id="@product.Id">
+                                 <img src="@product.Image" width="120" height="120" style="border-radius:5px; border:1px solid #bbb9b9;" />
+                             </a>
+                         </div>
+                         <div>
+                             <a asp-action="Details" class="text-info" asp-route-id="@product.Id">
+                                 <text class="text-primary" style="font-size:18px;">@product.Name</text>
+                             </a>
+                             <br />
+                             @{
+                                 if (product.SalePrice == 0)
+                                 //할인행사 없을 때
+                                 {
+                                     <b style="color:dimgray;font-size:large">@product.Price 루블</b>
+                                 }
+                                 //할인행사 있을 때
+                                 else
+                                 {
+                                     <b style="color:darkred;font-size:large">@product.SalePrice 루블</b>
+                                     <b style="font-size:small"><del>@product.Price 루블</del></b>
+                                 }
+                             }
+                         </div>
+
+                     </div>
+                 }
+
+                 @{
+                     if (Model.Count() > 5)
+                     {
+                         <div class="col-auto">
+                             <i class="fas fa-angle-double-right text-info"> 더보기</i>
+                         </div>
+                     }
+                 }
+
+             </div>
+                </div>
+
+      
+
+}

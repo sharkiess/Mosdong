@@ -98,8 +98,15 @@
                 <label asp-for="ProductItem.StockAvailabilityNum" class="col-form-label"></label>
             </div>
             <div class="col-9 form-inline">
-                <input type="text" id="StockAvailabilityNum" asp-for="ProductItem.StockAvailabilityNum" class="form-control text-left" style="width:120px" aria-describedby="StockAvailabilityNumInline" disabled />
-
+                @if (Model.ProductItem.IsStockUnlimited == false)
+                {
+                    <input type="text" id="StockAvailabilityNum" asp-for="ProductItem.StockAvailabilityNum" class="form-control text-left" style="width:120px" aria-describedby="StockAvailabilityNumInline" />
+                }
+                else
+                {
+                    <input type="text" id="StockAvailabilityNum" asp-for="ProductItem.StockAvailabilityNum" class="form-control text-left" style="width:120px" aria-describedby="StockAvailabilityNumInline" disabled />
+                }
+     
                 <span id="StockAvailabilityNumInline" class="form-check-inline">
                     &nbsp;
                     <input asp-for="ProductItem.IsStockUnlimited" class="form-check-input" type="checkbox" id="IsStockUnlimited">
@@ -183,9 +190,8 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            var items = "<option value='0'>Select</option>";
-            //$('#SubCategoryId').html(items);
-            //$('#MiniCategoryId').html(items);
+                //$('#SubCategoryId').html(items);
+                //$('#MiniCategoryId').html(items);
         });
 
         $('#CategoryId').change(function () {
@@ -199,6 +205,7 @@
                 });
 
                 $('#SubCategoryId').html(items);
+                $('#MiniCategoryId').html('<option value="0">Select</option>');
 
             });
         });
@@ -241,9 +248,8 @@
 
     <script>
         $(document).ready(function () {
-            $('#IsStockUnlimited').attr('checked', false);
-            $('#StockAvailabilityNum').prop('disabled', false);
-        });
+
+                });
 
         $('#IsStockUnlimited').change(function () {
             if (this.checked) {

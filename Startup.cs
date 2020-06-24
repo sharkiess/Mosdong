@@ -58,6 +58,12 @@ namespace Mosdong
             });
             services.AddRazorPages().AddRazorRuntimeCompilation();
 
+            services.AddSession(options =>
+            {
+                options.Cookie.IsEssential = true;
+                options.IdleTimeout = TimeSpan.FromMinutes(60);
+                options.Cookie.HttpOnly = true;
+            });
 
         }
 
@@ -98,6 +104,7 @@ namespace Mosdong
 
             app.UseRouting();
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseRequestLocalization();
 

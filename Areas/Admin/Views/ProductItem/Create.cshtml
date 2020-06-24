@@ -26,22 +26,25 @@
             </div>
         </div>
 
-            <div class="form-group row">
-                <div class="col-3">
-                    <label asp-for="ProductItem.CategoryId" class="col-form-label"></label>
-                </div>
-                <div class="col-9">
-                    <select asp-for="@Model.ProductItem.CategoryId" id="CategoryId" asp-items="@(new SelectList(@ViewBag.ListofCategory,"Id","Name"))" class="form-control" style="width:300px"></select>
-                </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="ProductItem.CategoryId" class="col-form-label"></label>
             </div>
-            <div class="form-group row">
-                <div class="col-3">
-                    <label asp-for="ProductItem.SubCategoryId" class="col-form-label"></label>
-                </div>
-                <div class="col-9">
-                    <select asp-for="@Model.ProductItem.SubCategoryId" name="SubCategoryId" id="SubCategoryId" asp-items="@(new SelectList(string.Empty,"Id","Name"))" class="form-control" style="width:300px"></select>
-                </div>
+            <div class="col-9">
+                <select asp-for="@Model.ProductItem.CategoryId" id="CategoryId" asp-items="@(new SelectList(@ViewBag.ListofCategory,"Id","Name"))" class="form-control" style="width:300px"></select>
+                <span asp-validation-for="ProductItem.CategoryId" class="text-danger"></span>
             </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="ProductItem.SubCategoryId" class="col-form-label"></label>
+            </div>
+            <div class="col-9">
+                <select asp-for="@Model.ProductItem.SubCategoryId" name="SubCategoryId" id="SubCategoryId" asp-items="@(new SelectList(string.Empty,"Id","Name"))" class="form-control" style="width:300px"></select>
+
+            </div>
+            <span asp-validation-for="ProductItem.SubCategoryId" class="text-danger"></span>
+        </div>
             <div class="form-group row">
                 <div class="col-3">
                     <label asp-for="ProductItem.MiniCategoryId" class="col-form-label"></label>

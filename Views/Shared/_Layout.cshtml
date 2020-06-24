@@ -1,4 +1,8 @@
 ﻿@using Mosdong.Utility
+@using Microsoft.AspNetCore.Http
+
+@inject IHttpContextAccessor HttpContextAccessor
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -87,17 +91,20 @@
             <div class="container">
                 <div class="row py-3">
                     <div class="input-group col-9 form-inline">
-                       
-                            <input type="text" class="form-control" placeholder="검색어를 입력하세요">
-                            <div class="input-group-append">
-                                <button class="btn btn-outline-secondary" type="button">&nbsp;<i class="fas fa-search"></i></button>
-                            </div>
 
-                        
+                        <input type="text" class="form-control" placeholder="검색어를 입력하세요">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button">&nbsp;<i class="fas fa-search"></i></button>
+                        </div>
+
+
                     </div>
+                    @{
+                        int? cartCount = HttpContextAccessor.HttpContext.Session.GetInt32(SD.ssShopingCartCount);
+                    }
                     <div class="col-3 text-right">
                         <a href="#" style="font-size:16pt;text-decoration:none">
-                            <i class="fas fa-shopping-cart"></i>(0)
+                            <i class="fas fa-shopping-cart"></i>(@(cartCount ?? 0))
                         </a>
                     </div>
                 </div>

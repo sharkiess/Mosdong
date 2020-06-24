@@ -21,7 +21,19 @@
                                         <text class="text-primary" style="font-size:18px;">@product.Name</text>
                                     </a>
                                     <br />
-                                    @product.Price 루블
+                                    @{
+                                        if (product.SalePrice == 0)
+                                        //할인행사 없을 때
+                                        {
+                                            <b style="color:dimgray;font-size:large">@product.Price 루블</b>
+                                        }
+                                        //할인행사 있을 때
+                                        else
+                                        {
+                                            <b style="color:darkred;font-size:large">@product.SalePrice 루블</b>
+                                            <b style="font-size:small"><del>@product.Price 루블</del></b>
+                                        }
+                                    }
                                 </div>
                             
                         </div>

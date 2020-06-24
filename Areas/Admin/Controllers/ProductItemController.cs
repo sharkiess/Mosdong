@@ -112,6 +112,7 @@ namespace Mosdong.Areas.Admin.Controllers
             {
                 return NotFound();
             }
+            ProductItemVM.ProductItem = await _db.ProductItem.Include(p => p.Category).Include(p => p.SubCategory).SingleOrDefaultAsync(p => p.Id == id);
 
             List<Category> categoryList = new List<Category>();
             categoryList = (from category in _db.Category
@@ -121,18 +122,18 @@ namespace Mosdong.Areas.Admin.Controllers
 
             List<SubCategory> subCategoryList = new List<SubCategory>();
             subCategoryList = (from subCategory in _db.SubCategory
+                               where subCategory.CategoryId == ProductItemVM.ProductItem.CategoryId
                             select subCategory).ToList();
             subCategoryList.Insert(0, new SubCategory { Id = 0, Name = "Select" });
             ViewBag.ListofSubCategory = subCategoryList;
 
             List<MiniCategory> miniCategoryList = new List<MiniCategory>();
             miniCategoryList = (from miniCategory in _db.MiniCategory
+                                where miniCategory.SubCategoryId == ProductItemVM.ProductItem.SubCategoryId
                                 select miniCategory).ToList();
             miniCategoryList.Insert(0, new MiniCategory { Id = 0, Name = "Select" });
             ViewBag.ListofMiniCategory = miniCategoryList;
 
-            ProductItemVM.ProductItem = await _db.ProductItem.Include(p => p.Category).Include(p => p.SubCategory).SingleOrDefaultAsync(p=>p.Id==id);
-            ProductItemVM.SubCategory = await _db.SubCategory.Where(s => s.CategoryId == ProductItemVM.ProductItem.CategoryId).ToListAsync();
 
             if (ProductItemVM.ProductItem == null)
             {

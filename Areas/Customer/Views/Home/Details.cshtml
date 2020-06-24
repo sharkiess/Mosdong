@@ -1,0 +1,183 @@
+﻿@model Mosdong.Models.ShoppingCart
+@using Mosdong.Extensions
+@using Mosdong.Utility
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+    <div class="border backgroundWhite">
+        <div class="row">
+            <div class="col-12">
+                <!--BreadCrums starts-->
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-action="Index">Home</a></li>
+                        <li class="breadcrumb-item"><a asp-action="Category1" asp-controller="Home" asp-area="Customer" asp-route-id="@Model.ProductItem.CategoryId">@Model.ProductItem.Category.Name</a></li>
+                        @{
+                            if (Model.ProductItem.MiniCategoryId == 0)
+                            {
+                                <li class="breadcrumb-item"><a asp-action="Category2" asp-controller="Home" asp-area="Customer" asp-route-id="@Model.ProductItem.SubCategoryId">@Model.ProductItem.SubCategory.Name</a></li>
+                            }
+                            else
+                            {
+                                <li class="breadcrumb-item"><a asp-action="Category2" asp-controller="Home" asp-area="Customer" asp-route-id="@Model.ProductItem.SubCategoryId">@Model.ProductItem.SubCategory.Name</a></li>
+                                <li class="breadcrumb-item"><a asp-action="Category3" asp-controller="Home" asp-area="Customer" asp-route-id="@Model.ProductItem.MiniCategoryId">@Model.ProductItem.MiniCategory.Name</a></li>
+                            }
+                        }
+
+                    </ol>
+                </nav>
+                <!--BreadCrums ends-->
+                <h4>@Model.ProductItem.Name</h4>
+            </div>
+        </div>
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <div class="col-md-4 text-center">
+                <img src="@Model.ProductItem.Image" width="300" height="300" style="border-radius:5px;border: 1px solid #ffffff;" />
+            </div>
+            <div class="col-md-8">
+                <div class="form-group row">
+                    <div class="col-12">
+                        <hr />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="ProductItem.Price" class="col-form-label"></label>
+                    </div>
+                    <div class="col-8">
+                        @{
+                            if (Model.ProductItem.SalePrice == 0)
+                            //할인행사 없을 때
+                            {
+                                <b style="color:darkred;font-size:large">@Model.ProductItem.Price 루블</b>
+                            }
+                            //할인행사 있을 때
+                            else
+                            {
+                                <b style="color:darkred;font-size:large"><span class="badge badge-pill badge-danger">Sale</span> @Model.ProductItem.SalePrice 루블</b>
+                                <b style="font-size:small"><del>@Model.ProductItem.Price 루블</del></b>
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="ProductItem.ProductUnit" class="col-form-label"></label>
+                    </div>
+                    <div class="col-8">
+                        <b>
+                            @Model.ProductItem.ProductUnitQuantity
+                            &nbsp;
+                            @Model.ProductItem.ProductUnit
+                        </b>
+                    </div>
+
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="ProductItem.StockAvailabilityNum" class="col-form-label"></label>
+                    </div>
+                    <div class="col-8">
+                        @if (@Model.ProductItem.IsStockUnlimited == true)
+                        {
+                            <b>재고무제한</b>
+                        }
+                        else
+                        {
+                            <b>@Model.ProductItem.StockAvailabilityNum &nbsp;@Model.ProductItem.ProductUnit</b>
+
+                        }
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="Count" class="col-form-label">주문수량</label>
+                    </div>
+                    <div class="col-8">
+                        <input asp-for="Count" class="form-control text-left" style="width:120px">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-4">
+
+                        @if (User.IsInRole(SD.ManagerUser))
+                        {
+                            <a asp-area="Admin" asp-controller="ProductItem" asp-action="Edit" asp-route-id="@Model.ProductItemId" class="btn btn-info form-control">상품편집</a>
+                        }
+
+                    </div>
+                    <div class="col-4">
+                        <a asp-action="Index" class="btn btn-success form-control">메인으로</a>
+                    </div>
+                    <div class="col-4">
+                        @{ if (Model.ProductItem.StockAvailability == "0" && Model.ProductItem.IsStockUnlimited == true)
+                            {
+                                <button type="submit" value="장바구니 담기" class="btn btn-primary form-control">
+                                    장바구니 담기
+                                </button>
+                            }
+                            else if (Model.ProductItem.StockAvailabilityNum != 0)
+                            {
+                                switch (Model.ProductItem.StockAvailability)
+                                {
+                                    case "0":
+                                        <button type="submit" value="장바구니 담기" class="btn btn-primary form-control">
+                                            장바구니 담기
+                                        </button>
+                                        break;
+                                    case "1":
+                                        <a href="#" value="품절" class="btn btn-dark form-control">
+                                            품절
+                                        </a>
+                                        break;
+                                    case "2":
+                                        <a href="#" value="입고예정" class="btn btn-dark form-control">
+                                            입고예정
+                                        </a>
+                                        break;
+                                }
+                            }
+                            else
+                            {
+                                <a href="#" value="품절" class="btn btn-dark form-control">
+                                    품절
+                                </a>
+                            }
+                        }
+
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-12">
+                        <hr />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-4">
+                        <label asp-for="ProductItem.Description" class="col-form-label"></label>
+                    </div>
+                    <div class="col-8">
+                        @Html.Raw(Model.ProductItem.Description)
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <input asp-for="ProductItemId" hidden />
+</form>
+
+@section Scripts{
+
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+                            }

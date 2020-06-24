@@ -1,9 +1,12 @@
 ﻿using Mosdong.Properties;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
 namespace Mosdong.Models
@@ -48,9 +51,29 @@ namespace Mosdong.Models
         [Range(1, int.MaxValue, ErrorMessage = "판매단위는 1 이상이어야합니다.")]
         public int ProductUnitQuantity { get; set; }
 
+        public enum EProductUnit
+        {
+            [EnumMember(Value = "개")]
+            개,
+            [EnumMember(Value = "팩")]
+            팩,
+            [EnumMember(Value = "그램")]
+            그램,
+            [EnumMember(Value = "키로")]
+            키로,
+            [EnumMember(Value = "박스")]
+            박스,
+            [EnumMember(Value = "세트")]
+            세트,
+            [EnumMember(Value = "마리")]
+            마리,
+            [EnumMember(Value = "포기")]
+            포기
+        }
+
         [Display(Name = "판매단위")]
-        public string ProductUnit { get; set; }
-        public enum EProductUnit {  개 = 0, 팩 = 1, 그램 = 2, 키로 = 3, 박스 = 4, 세트 = 5, 마리 = 6, 포기 = 7 }
+        [JsonConverter(typeof(StringEnumConverter))]
+        public EProductUnit ProductUnit { get; set; }
 
         [Display(Name = "상품표시옵션")]
         public bool IsNotVisible { get; set; }
@@ -59,9 +82,11 @@ namespace Mosdong.Models
         [Display(Name = "상품이미지")]
         public string Image { get; set; }
 
+        [RegularExpression(@"^[1-9]\d*$", ErrorMessageResourceType = typeof(Resources), ErrorMessageResourceName = "IsRequired")]
         [Display(Name = "카테고리 1")]
         public int CategoryId { get; set; }
-        
+
+       
         [ForeignKey("CategoryId")]
         public virtual Category Category { get; set; }
 
