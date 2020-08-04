@@ -1,0 +1,115 @@
+﻿@model Mosdong.Models.ViewModels.OrderDetailsCart
+
+<form method="post">
+    @if (Model.ListCart.Count > 0)
+    {
+        <br />
+        <input id="userId" asp-for="@Model.ListCart[0].ApplicationUserId" hidden />
+
+        <div class="container">
+            <div class="card">
+                <div class="card-header bg-dark text-light ml-0 row container">
+                    <div class="col-6">
+                        <i class="fa fa-shopping-cart"></i> &nbsp; 장바구니
+                    </div>
+                    <div class="col-6 text-right">
+                        <a asp-area="Customer" asp-controller="Home" asp-action="Index" class="btn btn-outline-light btn-sm">
+                            쇼핑 계속하기
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    @foreach (var item in Model.ListCart)
+                    {
+                        <div class="row">
+                            <div class="col-4 py-2">
+                                <img src="@item.ProductItem.Image" class="rounded" width="120" height="120" />
+                            </div>
+                            <div class="col-8 row">
+                                <div class="col-6" style="padding-top:5px;">
+                                    <h6><strong>@item.ProductItem.Name</strong></h6>
+                                    <h6><strong>@item.ProductItem.Price 루블 <span class="text-muted">x</span> @item.Count 개 </strong></h6>
+                                </div>
+                                <div class="col-4">
+                                    <div class="float-right mx-1">
+                                        <button type="submit" class="btn btn-primary" asp-action="plus" asp-route-cartId="@item.Id" style="font-size:xx-small">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
+                                    <div class="float-right mx-1">
+                                        <button type="submit" class="btn btn-danger" asp-action="minus" asp-route-cartId="@item.Id" style="font-size:xx-small">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-2 text-right">
+                                    <button type="submit" class="btn btn-outline-danger" asp-action="remove" asp-route-cartId="@item.Id" data-toggle="tooltip" data-placement="bottom" title="" data-original-title="장바구니에서 삭제">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+                    }
+
+                    <div class="row">
+                        <div class="col-12 col-md-5">
+                            <div class="row">
+                                <div class="col-7">
+                                    <input asp-for="@Model.OrderHeader.CouponCode" id="txtCouponCode" class="form-control" placeholder="쿠폰 코드 입력" />
+                                </div>
+                                <div class="col-5" style="margin-top:2px; margin-bottom:4px">
+                                    <button type="submit" class="btn btn-sm form-control btn-outline-success" id="btnCoupon" asp-action="AddCoupon">
+                                        쿠폰 적용
+                                    </button>
+                                    <button type="submit" class="btn btn-sm form-control btn-outline-danger" style="display:none" id="btnRemoveCoupon" asp-action="RemoveCoupon">
+                                        쿠폰 제거
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6 offset-md-4 col-lg-4 offset-lg-3 pr-4">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between bg-light">
+                                    <span class="text-info">합계</span>
+                                    <strong class="text-info">
+                                        <span id="txtOrderTotal">@Model.OrderHeader.OrderTotal 루블</span>
+                                    </strong>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="col-12 col-lg-4 offset-lg-8 col-md-6 offset-md-6">
+                        <a aps-action="Summary" asp-area="Customer" asp-controller="Cart" class="btn btn-success form-control">
+                            주문진행
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+    else
+    {
+        <div class="backgroundWhiteBorder">장바구니가 비어있습니다.</div>
+    }
+
+</form>
+
+@section Scripts{ 
+    <script>
+        $(function () {
+            var couponCode = document.getElementById("txtCouponCode").value;
+            if (couponCode.length > 0) {
+                document.getElementById('btnCoupon').style.display = 'none';
+                document.getElementById('btnRemoveCoupon').style.display = '';
+            }
+            else {
+                document.getElementById('btnCoupon').style.display = '';
+                document.getElementById('btnRemoveCoupon').style.display = 'none';
+            }
+        });
+    </script>
+}

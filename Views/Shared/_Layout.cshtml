@@ -38,54 +38,54 @@
                         <ul class="navbar-nav">
                             <partial name="_LoginPartial" />
                         </ul>
-                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                <ul class="navbar-nav flex-grow-1">
-                                    @if (User.IsInRole(SD.ManagerUser))
-                                    {
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="dropdown00" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                상점 관리
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="dropdown00">
-                                                <div class="dropdown dropright">
-                                                    <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">카테고리</a>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
-                                                        <a class="dropdown-item" asp-action="Index" asp-controller="Category" asp-area="Admin">카테고리 1</a>
-                                                        <a class="dropdown-item" asp-action="Index" asp-controller="SubCategory" asp-area="Admin">카테고리 2</a>
-                                                        <a class="dropdown-item" asp-action="Index" asp-controller="MiniCategory" asp-area="Admin">카테고리 3</a>
-                                                    </div>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav flex-grow-1">
+                                @if (User.IsInRole(SD.ManagerUser))
+                                {
+                                    <li class="nav-item dropdown">
+                                        <a class="nav-link dropdown-toggle" href="#" id="dropdown00" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            상점 관리
+                                        </a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdown00">
+                                            <div class="dropdown dropright">
+                                                <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">카테고리</a>
+                                                <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
+                                                    <a class="dropdown-item" asp-action="Index" asp-controller="Category" asp-area="Admin">카테고리 1</a>
+                                                    <a class="dropdown-item" asp-action="Index" asp-controller="SubCategory" asp-area="Admin">카테고리 2</a>
+                                                    <a class="dropdown-item" asp-action="Index" asp-controller="MiniCategory" asp-area="Admin">카테고리 3</a>
                                                 </div>
-                                                <a class="dropdown-item" asp-action="Index" asp-controller="ProductItem" asp-area="Admin">상품목록</a>
-                                                <a class="dropdown-item" asp-action="Index" asp-controller="Coupon" asp-area="Admin">쿠폰목록</a>
-                                                <a class="dropdown-item" asp-action="Index" asp-controller="User" asp-area="Admin">직원계정</a>
-                                                <div class="dropdown-divider"></div>
-                                                <div class="dropdown dropright">
-                                                    <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Layouts</a>
-                                                    <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
-                                                        <a class="dropdown-item" href="#">Basic</a>
-                                                        <a class="dropdown-item" href="#">Compact Aside</a>
-                                                        <div class="dropdown-divider"></div>
-                                                        <div class="dropdown dropright">
-                                                            <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Custom</a>
-                                                            <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
-                                                                <a class="dropdown-item" href="#">Fullscreen</a>
-                                                                <a class="dropdown-item" href="#">Empty</a>
-                                                                <div class="dropdown-divider"></div>
-                                                                <a class="dropdown-item" href="#">Magic</a>
-                                                            </div>
+                                            </div>
+                                            <a class="dropdown-item" asp-action="Index" asp-controller="ProductItem" asp-area="Admin">상품목록</a>
+                                            <a class="dropdown-item" asp-action="Index" asp-controller="Coupon" asp-area="Admin">쿠폰목록</a>
+                                            <a class="dropdown-item" asp-action="Index" asp-controller="User" asp-area="Admin">직원계정</a>
+                                            <div class="dropdown-divider"></div>
+                                            <div class="dropdown dropright">
+                                                <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Layouts</a>
+                                                <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
+                                                    <a class="dropdown-item" href="#">Basic</a>
+                                                    <a class="dropdown-item" href="#">Compact Aside</a>
+                                                    <div class="dropdown-divider"></div>
+                                                    <div class="dropdown dropright">
+                                                        <a class="dropdown-item dropdown-toggle" href="#" id="dropdown-layouts" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Custom</a>
+                                                        <div class="dropdown-menu" aria-labelledby="dropdown-layouts">
+                                                            <a class="dropdown-item" href="#">Fullscreen</a>
+                                                            <a class="dropdown-item" href="#">Empty</a>
+                                                            <div class="dropdown-divider"></div>
+                                                            <a class="dropdown-item" href="#">Magic</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </li>
-                                    }
+                                        </div>
+                                    </li>
+                                }
 
-                                    @await Component.InvokeAsync("TopNav")
+                                @await Component.InvokeAsync("TopNav")
 
 
-                                </ul>
-                            </div>
-</div>
+                            </ul>
+                        </div>
+                    </div>
                 </nav>
             </div>
             <div class="container">
@@ -103,7 +103,7 @@
                         int? cartCount = HttpContextAccessor.HttpContext.Session.GetInt32(SD.ssShopingCartCount);
                     }
                     <div class="col-3 text-right">
-                        <a href="#" style="font-size:16pt;text-decoration:none">
+                        <a asp-area="Customer" asp-controller="Cart" asp-action="Index" style="font-size:16pt;text-decoration:none">
                             <i class="fas fa-shopping-cart"></i>(@(cartCount ?? 0))
                         </a>
                     </div>
@@ -132,6 +132,7 @@
     <script type="text/javascript" charset="utf8" src="~/DataTables/datatables.js"></script>
 
     <script src="https://kit.fontawesome.com/8cc909eb3b.js" crossorigin="anonymous"></script>
+
 
     @RenderSection("Scripts", required: false)
 </body>

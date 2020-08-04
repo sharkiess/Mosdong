@@ -510,3 +510,4 @@ C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\D
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_IndexSaleItemsPartial.cshtml.g.cs
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Mosdong.csprojAssemblyReference.cache
 C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Home\Category2.cshtml.g.cs
+C:\Users\Admin\Mosdong\obj\Debug\netcoreapp3.1\Razor\Areas\Customer\Views\Cart\Index.cshtml.g.cs

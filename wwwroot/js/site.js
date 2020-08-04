@@ -60,7 +60,7 @@ $('.dropdown-hover-all').on('mouseleave', '.dropdown', function () {
 $(document).ready(function () {
     $('#admin_category_table').DataTable({
         initComplete: function () {
-            this.api().columns([0,1]).every(function () {
+            this.api().columns([0, 1]).every(function () {
                 var column = this;
                 var select = $('<select><option value=""></option></select>')
                     .appendTo($(column.footer()).empty())
@@ -137,3 +137,9 @@ $(document).ready(function () {
     });
 });
 //Admin ProductItem Datatable Ends
+
+//Tooltip Starts
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+//Tooltip Ends
